@@ -1,0 +1,8 @@
+!Texture
+Id: 85eaac99-5f68-4a67-a80b-efcbb9f4ad24
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Textures/Misc/circle01.png
+Type: !ColorTextureType
+    ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+IsStreamable: false

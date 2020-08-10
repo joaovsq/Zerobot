@@ -1,0 +1,8 @@
+!Sound
+Id: 3cef4c87-620e-4a6e-a97b-e52adf38838c
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Audio/coin_get.wav
+CompressionRatio: 15
+StreamFromDisk: false
+Spatialized: false

@@ -1,0 +1,7 @@
+!Texture
+Id: c73d2a89-6719-478c-8503-84156f6eff0e
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Textures/normalmapLower.png
+Type: !NormalMapTextureType {}
+IsStreamable: false

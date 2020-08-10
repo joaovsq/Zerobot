@@ -1,0 +1,19 @@
+!Animation
+Id: 73f9363f-29c6-4bfc-9416-e1cae6f1a57f
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Animation/Punch.fbx
+ClipDuration:
+    Enabled: false
+    StartAnimationTime: 0:00:00:00.0000000
+    EndAnimationTime: 0:00:30:00.0000000
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+RepeatMode: LoopInfinite
+Type: !StandardAnimationAssetType {}
+Skeleton: 79fb4f6c-7823-4d4a-96b9-a72eb7c37c7b:Models/mannequinModel Skeleton
+RootMotion: false
+PreviewModel: 442210e6-9031-410b-baaa-c8e15eec64da:Models/mannequinModel
+AnimationTimeMinimum: 0:00:00:00.0000000
+~SourceHashes:
+    303210a36e8ffc94d6b8923b46e97978~../../Resources/Animation/Punch.fbx: f5ddaffca51f1fab08b1de37a112e7b4
+AnimationTimeMaximum: 0:00:00:00.6670000

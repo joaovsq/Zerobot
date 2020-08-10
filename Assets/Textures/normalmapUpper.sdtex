@@ -1,0 +1,7 @@
+!Texture
+Id: abf8a4d8-3ab0-4898-a22a-459332ecb255
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Textures/normalmapUpper.png
+Type: !NormalMapTextureType {}
+IsStreamable: false

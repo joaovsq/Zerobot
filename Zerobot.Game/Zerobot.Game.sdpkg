@@ -1,0 +1,23 @@
+!Package
+SerializedVersion: {Assets: 3.1.0.0}
+Meta:
+    Name: Zerobot.Game
+    Version: 1.0.0
+    Authors: []
+    Owners: []
+    RootNamespace: Zerobot
+    Dependencies: null
+AssetFolders:
+    -   Path: !dir ../Assets
+    -   Path: !dir Effects
+ResourceFolders: []
+OutputGroupDirectories: {}
+ExplicitFolders: []
+Bundles: []
+TemplateFolders: []
+RootAssets:
+    - 2e412eb2-b20e-4479-bbd0-4fbc5665a1cb:CentralChunk
+    - c58cfc07-90e5-414f-9945-fc15b1bd6180:WesternChunk
+    - c5da27a0-025a-42d4-9163-448eeba25ffa:SouthernChunk
+    - d252d834-5891-4667-8961-b14306ccd1f3:EasternChunk
+    - e18fd6b8-eab3-47b8-b4ee-21abc6670eb8:NorthernChunk

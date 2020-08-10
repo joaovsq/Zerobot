@@ -1,0 +1,8 @@
+!Texture
+Id: a0b9eed2-f962-4d8f-b0a9-324a4e39d994
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Textures/Ring01.png
+Type: !ColorTextureType
+    ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+IsStreamable: false
