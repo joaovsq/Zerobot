@@ -1,20 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
-    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>Zerobot</RootNamespace>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>Zerobot</RootNamespace>
 
-    <OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 
-    <!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
-    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-  </PropertyGroup>
+		<!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
+		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Zerobot.Game\Zerobot.Game.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Zerobot.Game\Zerobot.Game.csproj" />
+		<ProjectReference Include="..\Zerobot.CommandCenter\Zerobot.CommandCenter.csproj" />
+	</ItemGroup>
 
 </Project>

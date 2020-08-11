@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Threading.Tasks;
 using Stride.Core.Collections;
@@ -54,7 +52,6 @@ namespace Zerobot.Core
                 // Clone
                 var spawnedEntities = source.Instantiate();
 
-                // Add
                 foreach (var prefabEntity in spawnedEntities)
                 {
                     prefabEntity.Transform.UpdateLocalMatrix();

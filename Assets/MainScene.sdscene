@@ -3948,6 +3948,14 @@ Hierarchy:
                     cca6a18fb6d6004f9bdf6039fd2600ef: !Zerobot.Gameplay.MusicScript,Zerobot.Game
                         Id: 8fa1a6cc-d6b6-4f00-9bdf-6039fd2600ef
                         SoundMusic: b9f9a9e7-5fbf-426e-b4bc-bcb1f38272ab:Audio/FishLampByUlrick-EvensSalies
+                    c9d023f92d27de3dc357c75327b158a9: !Zerobot.Core.GameProfiler,Zerobot.Game
+                        Id: 69caf0a6-d67b-4512-a772-4291ee071784
+                        Enabled: true
+                        TextColor: {R: 144, G: 238, B: 144, A: 255}
+                        RefreshTime: 500.0
+                        SortingMode: ByTime
+                        FilteringMode: GpuEvents
+                        ResultPage: 1
         -   Entity:
                 Id: 703b172f-6924-4308-a026-02f3a89a0b32
                 Name: Box3x1x1

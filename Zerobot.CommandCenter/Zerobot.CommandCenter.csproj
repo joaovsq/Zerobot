@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<RootNamespace>Zerobot</RootNamespace>
+		
+		<OutputPath>..\Bin\CommandCenter\$(Configuration)\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--<ProjectReference Include="..\Zerobot.Game\Zerobot.Game.csproj"  PrivateAssets="All" />-->
+	</ItemGroup>
+
+</Project>

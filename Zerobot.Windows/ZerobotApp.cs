@@ -1,4 +1,7 @@
 using Stride.Engine;
+using System.Diagnostics;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Zerobot.CommandCenter;
 
 namespace Zerobot
 {
@@ -6,6 +9,9 @@ namespace Zerobot
     {
         static void Main(string[] args)
         {
+
+            var panel = new CommandCenterAdmin();
+
             using (var game = new Game())
             {
                 game.Run();

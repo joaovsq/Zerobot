@@ -1,5 +1,3 @@
-
-
 using System;
 using Stride.Core;
 using Stride.Core.Annotations;
