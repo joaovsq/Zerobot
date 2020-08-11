@@ -153,6 +153,14 @@ Hierarchy:
         - ref!! 065a4aa8-69ec-47d8-b561-6a5847944f26
         - ref!! 0ddffa94-dc32-47b1-9642-fc445f7db9c3
         - ref!! 946367f6-86dc-44c0-b54f-9361fbfedb0e
+        - ref!! ef0a2db9-b557-4de4-a28e-8ce2c7f7be37
+        - ref!! 9671ddac-935c-4e8f-9fb1-07d59c44894e
+        - ref!! 2915d083-fa7e-4669-a42a-5c8ae4df1806
+        - ref!! e72dd239-638c-47cb-9083-77064d86a1ac
+        - ref!! ee0f676f-e1da-4c16-989a-d976d671d0dc
+        - ref!! c0aa0566-5fb6-4a43-92ce-aa12c37cc67b
+        - ref!! 85c4857f-fb3d-42c4-9cc2-a5b74c9071bd
+        - ref!! 07508dbe-2664-4846-a97c-0d5133419ba8
     Parts:
         -   Entity:
                 Id: 0012425a-8167-4220-b4f9-5a50ab7c9538
@@ -389,6 +397,96 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             a2d6ca1adcf6ec41a4c7d29eb46ea480: ref!! b7988d96-fd6c-45fa-a862-f3669a0a9592
+        -   Folder: null
+            Entity:
+                Id: 054902cd-43ae-4c77-a0ed-8febed82c8a1
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: 8e83ef72-088f-401d-a0a2-db4e545a0fec
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 4bd6b673-f29a-4ab9-981f-c04af89867b0
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: 18ba63c2-0e4f-403d-aa04-6b3e664503a8
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: f9228b52-72fd-438b-bf58-28f9eb611848
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! c40eb2c0-6ae7-40a5-8796-4124bcc68a18
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: 7162ced9-df7c-4459-b0d0-846611593b26
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: c40eb2c0-6ae7-40a5-8796-4124bcc68a18
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: 9ceab7de-eaad-4092-9ac7-767994cc3d0d
+        -   Folder: null
+            Entity:
+                Id: 06448a91-f758-4a99-9660-1b4b21d96671
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: bc7db0b6-8d35-49bc-9378-7aba7af6c26d
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 15625aa4-9770-4299-b63d-796085447dc9
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: ab498fd7-17b7-44a8-87b8-5f31c5546df2
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: cab3fa48-872a-423a-aca0-3e563e142233
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! 2a587429-2616-4160-83e3-6bc36ac26792
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: 0ed4612b-f8fd-4d79-8d25-b72740ad7f4d
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: 2a587429-2616-4160-83e3-6bc36ac26792
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: 13e7c432-719b-4b9d-be0b-5ea1a396c1d9
         -   Folder: Coins
             Entity:
                 Id: 065a4aa8-69ec-47d8-b561-6a5847944f26
@@ -425,6 +523,18 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             4eecb3c27affe3478bcc584553d59e41: ref!! c2b3ec4e-ff7a-47e3-8bcc-584553d59e41
+        -   Folder: Coins
+            Entity:
+                Id: 07508dbe-2664-4846-a97c-0d5133419ba8
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: ffbd0a2f-d687-431e-87eb-46868e717764
+                        Position: {X: 9.0, Y: 0.0, Z: 2.31651545}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! 8e83ef72-088f-401d-a0a2-db4e545a0fec
         -   Folder: Platform/Walls
             Entity:
                 Id: 086533ec-a740-458f-9caf-8b4931a69fcf
@@ -437,6 +547,51 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             a2d6ca1adcf6ec41a4c7d29eb46ea480: ref!! b3f00711-f2df-48fd-b4b7-3427f82d7f6a
+        -   Folder: null
+            Entity:
+                Id: 08dc21ee-44b1-4c63-9ace-4bb3b532fcda
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: d352f1c8-e032-4f91-809e-7c4d0c32d30d
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 8e03609b-0036-4ed1-86d1-f4894b76e1c8
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: bec84e7e-4c2d-4384-8eec-8185cc760208
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: c3a6c99a-22a9-4ce2-9db6-a880fea30727
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! 015d4f52-ea75-4d61-81c0-9cfad7c9a86c
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: eabf80f9-6f4f-4cc6-876c-e915204f4e26
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: 015d4f52-ea75-4d61-81c0-9cfad7c9a86c
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: c105f1e5-7f85-4543-8a0b-af30a2e23897
         -   Folder: Platform/Walls
             Entity:
                 Id: 0931c92d-d555-43b0-889d-ca50d437c6a3
@@ -508,6 +663,31 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: 5ebbf2f8-7d30-4fd8-a0ca-3c0600fcd367
+        -   Folder: null
+            Entity:
+                Id: 0dc13b4c-29e8-41f5-b864-1f510b525c8b
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 8e03609b-0036-4ed1-86d1-f4894b76e1c8
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: 3e72b850-28db-4d80-b739-dd0238ee3bb7
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: c105f1e5-7f85-4543-8a0b-af30a2e23897
         -   Folder: Coins
             Entity:
                 Id: 0ddffa94-dc32-47b1-9642-fc445f7db9c3
@@ -890,6 +1070,31 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: 1a6e8e04-4f7c-47c2-989e-de7b532c47d9
+        -   Folder: null
+            Entity:
+                Id: 1a7c2e6e-445a-4441-a880-f574e2997234
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 3fb77f7a-43fa-46cc-8e98-6682aa8f5221
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: 7c63b8ec-1a0b-4e07-ba29-59de96904f31
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: a94e4a38-1eb4-4a41-91f8-d4d8ec846d03
         -   Folder: Platform/Walls
             Entity:
                 Id: 1abdf12d-eafa-42da-abc9-b50e502f3a9e
@@ -1125,6 +1330,51 @@ Hierarchy:
                                 Is2D: false
                                 Radius: 0.2
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+        -   Folder: null
+            Entity:
+                Id: 23c6313e-f1af-425d-814e-58a7661c14a0
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: 7f299822-7410-4948-acfe-433aa899fec1
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 4272b903-077a-4534-97f8-94602808eda0
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: cfb62710-1ba5-47ad-8d50-700072fc566a
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: 20da8717-75a9-446f-a6d8-272192fdbcad
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! a29911c7-5a1c-4200-95cd-23c517a11729
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: 07f73737-a83d-4c5c-b2d2-6eff7328b6fd
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: a29911c7-5a1c-4200-95cd-23c517a11729
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: 56364b20-a369-4ca3-8b72-ccc45b981511
         -   Folder: Platform/Walls
             Entity:
                 Id: 25121c1d-81be-4559-a5a1-a0abaf4d1d51
@@ -1257,6 +1507,43 @@ Hierarchy:
                                 BiasParameters: {}
                                 ComputeTransmittance: false
                         Intensity: 5.0
+        -   Folder: Coins
+            Entity:
+                Id: 2915d083-fa7e-4669-a42a-5c8ae4df1806
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: c8fefac2-edf6-4d2b-a975-0361b4dd8bfe
+                        Position: {X: 3.372939, Y: 0.0, Z: -3.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! d352f1c8-e032-4f91-809e-7c4d0c32d30d
+        -   Folder: null
+            Entity:
+                Id: 298b72d5-8e7c-4a7f-b1d0-54859963cbdc
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 86b4d3de-0942-42dd-8def-6d5e4adf1d3a
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: e9b56ce9-af91-4c1c-8dad-1af0bd26c62d
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: a8e106b3-1f45-4235-bbf0-624af3914d98
         -   Folder: Platform/Walls
             Entity:
                 Id: 29d6292c-4882-4fc9-8967-cf941b25ab01
@@ -1329,6 +1616,31 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             a2d6ca1adcf6ec41a4c7d29eb46ea480: ref!! 01b0c1e4-2bd4-445f-9ddf-03d9d81ca9a7
+        -   Folder: null
+            Entity:
+                Id: 2ea2fa85-5141-429b-aef0-6a8789df6d20
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 4272b903-077a-4534-97f8-94602808eda0
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: 1069ff32-63e6-4255-b5f2-d24147abbccc
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: 56364b20-a369-4ca3-8b72-ccc45b981511
         -   Entity:
                 Id: 2ea8e6f8-cdc3-4d09-bd2c-f5cd331e1911
                 Name: GridBase10x10
@@ -1815,6 +2127,31 @@ Hierarchy:
                 BasePartAsset: 1e2f7b81-66fd-4e62-8c6c-6cc3fcc49cde:BlocksPrefabs/GridBase10x10
                 BasePartId: b045349c-565e-4488-9130-a795b0e3b229
                 InstanceId: cf29671f-6508-4eea-8eb1-22f39d4bc302
+        -   Folder: null
+            Entity:
+                Id: 3c87df43-f002-4784-b0be-176b6cb7838a
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 4bd6b673-f29a-4ab9-981f-c04af89867b0
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: 9bb83879-c53a-402c-b3b5-3de7e862ba67
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: 9ceab7de-eaad-4092-9ac7-767994cc3d0d
         -   Entity:
                 Id: 3cbf619f-2820-42d4-9485-45836af0e855
                 Name: Box3x1x1
@@ -3962,6 +4299,51 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             4eecb3c27affe3478bcc584553d59e41: ref!! 4fa13d6f-4725-4bef-9904-f41d2193d968
+        -   Folder: null
+            Entity:
+                Id: 7a6918d4-6d4b-480e-8995-2207022ccd6e
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: 528e5fb3-f787-4721-b097-1ce3e99d4d84
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! ac685a4d-1781-43e9-8401-5748ba583a3d
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: f9f7e012-3109-4a89-879b-5812b31f153b
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: 2aec6433-27bb-477a-827f-869a4bd508d0
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! 1c580fcd-5b27-4fbf-99e8-4b2cd6b2b155
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: 95c10928-a234-4fe7-b10c-fa2660eb4d7a
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: 1c580fcd-5b27-4fbf-99e8-4b2cd6b2b155
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: 09c63e2e-e251-47b5-9a65-61ab16494bfa
         -   Entity:
                 Id: 7bcdcc67-8a62-4e12-99e4-7d7a81e79234
                 Name: Box3x1x1
@@ -3997,6 +4379,31 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: dde82d09-7b47-4182-bb35-3dd41894d1f1
+        -   Folder: null
+            Entity:
+                Id: 7be353cd-d0db-4e27-810e-a9398d72f91b
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: ac685a4d-1781-43e9-8401-5748ba583a3d
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: 2ef26f69-be58-4b65-bf65-47d121759da9
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: 09c63e2e-e251-47b5-9a65-61ab16494bfa
         -   Entity:
                 Id: 7d3ed3f8-a462-4248-9547-ef7d019b86a0
                 Name: Box3x1x1
@@ -4204,6 +4611,18 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: b43b8b4d-7463-487d-9881-ffc18aa0bed4
+        -   Folder: Coins
+            Entity:
+                Id: 85c4857f-fb3d-42c4-9cc2-a5b74c9071bd
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: 83de94c9-f375-4797-be55-aeda167b7c65
+                        Position: {X: -0.981683731, Y: 0.0, Z: -3.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! 7f299822-7410-4948-acfe-433aa899fec1
         -   Folder: Platform/Walls
             Entity:
                 Id: 861eaa30-5026-4f07-883e-a9c27485e089
@@ -4583,6 +5002,18 @@ Hierarchy:
                 BasePartAsset: 71887986-172c-434e-89d3-aec86267e5c9:BlocksPrefabs/Box2x1x1
                 BasePartId: cfc05c6f-da7c-4ba4-8e09-1a659e64ff2a
                 InstanceId: 632055fe-7761-470e-bc58-b80e1cf0da28
+        -   Folder: Coins
+            Entity:
+                Id: 9671ddac-935c-4e8f-9fb1-07d59c44894e
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: 26499b4f-d3bf-46fb-92b3-456aa9262fd4
+                        Position: {X: 5.26890945, Y: 0.0, Z: -3.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! bc7db0b6-8d35-49bc-9378-7aba7af6c26d
         -   Folder: Platform/Walls
             Entity:
                 Id: 96823689-c235-4e20-a4ef-853f6d3feda1
@@ -4932,6 +5363,51 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: 22ead584-622b-44fa-9723-f2f422abb727
+        -   Folder: null
+            Entity:
+                Id: a11dd419-35e2-4bcd-a6ac-2c1cf31601a4
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: 94204f9c-c794-4ac5-bf14-46e3b508989c
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 3fb77f7a-43fa-46cc-8e98-6682aa8f5221
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: df875c50-c61a-40dd-939f-44e81840a366
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: 13c49137-daec-42ad-92d0-f69e4cfad5b1
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! 2e960328-fc9c-4a0c-b356-e9671001e039
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: fe4afae0-0338-4920-a39e-19f469cd72cc
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: 2e960328-fc9c-4a0c-b356-e9671001e039
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: a94e4a38-1eb4-4a41-91f8-d4d8ec846d03
         -   Entity:
                 Id: a1b33618-e63a-42ca-8e2a-1cd75654108d
                 Name: CoinGold
@@ -5168,8 +5644,8 @@ Hierarchy:
                 Components:
                     39d4bdb202782a41869f2a6d53da4edf: !TransformComponent
                         Id: b2bdd439-7802-412a-869f-2a6d53da4edf
-                        Position: {X: 0.0, Y: 1.65, Z: 0.0}
-                        Rotation: {X: -0.3535534, Y: -0.3535534, Z: -0.14644663, W: 0.853553355}
+                        Position: {X: -11.8265686, Y: 13.7056932, Z: -1.51216257}
+                        Rotation: {X: -0.05772081, Y: -0.736706853, Z: -0.439623326, W: 0.5105513}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             a116d811cab5bf4da5211050e1d34e10: ref!! 11d816a1-b5ca-4dbf-a521-1050e1d34e10
@@ -5179,8 +5655,8 @@ Hierarchy:
                 Components:
                     a116d811cab5bf4da5211050e1d34e10: !TransformComponent
                         Id: 11d816a1-b5ca-4dbf-a521-1050e1d34e10
-                        Position: {X: 0.0, Y: 0.0, Z: 12.0}
-                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.296350926, W: 0.955079138}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     1fb7d1656248fc4eb7c13c9d933979c7: !CameraComponent
@@ -6019,6 +6495,18 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             93de224b90e2294a896f8bb03d0c6705: ref!! 0f2c81df-ccba-4e7d-899b-6c554e5adf37
+        -   Folder: Coins
+            Entity:
+                Id: c0aa0566-5fb6-4a43-92ce-aa12c37cc67b
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: 1e65bd51-09ba-4d8d-a623-acb5d15e67de
+                        Position: {X: 1.27405262, Y: 0.0, Z: -3.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! 759f661c-7548-481a-af49-078368e8b20f
         -   Entity:
                 Id: c11560f0-d670-4f3c-b390-5cde18e6b918
                 Name: Ramp1x1_2x1
@@ -6052,6 +6540,51 @@ Hierarchy:
                 BasePartAsset: ac9a385c-23c6-48a5-98a1-2d4e5a8fc474:BlocksPrefabs/Ramp1x1_2x1
                 BasePartId: dcbcec6d-0b9a-404a-87ee-0a0f69fc314e
                 InstanceId: 04ca7a88-2fe4-4d82-b9d5-140778cb8bdf
+        -   Folder: null
+            Entity:
+                Id: c3b5b15e-06d6-4a5a-a27d-2c0ef979c309
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: a525243a-ec35-4fca-9128-6c63af500fbd
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 3d45b133-517c-4adf-a672-8b351ce3ab6f
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: 48c85d35-74b1-4e92-ab7d-35130856f417
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: 310856c5-d83b-4496-9ca4-11c1ff661365
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! f8f71ccd-5f57-455d-a283-171161fc1791
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: f2ca9bc1-e878-4ad4-b88c-6be75c31461b
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: f8f71ccd-5f57-455d-a283-171161fc1791
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: 2c83e49c-0d47-4514-a489-7f84615e5b26
         -   Folder: Platform/Walls
             Entity:
                 Id: c458fb05-2fbc-4e8b-b434-aed4d9554eee
@@ -6401,6 +6934,76 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: 2720f2ba-70ad-4b94-b1c2-1e39b6a29e9f
+        -   Folder: null
+            Entity:
+                Id: d3d30349-00f1-4cf3-b545-efd3b50dc380
+                Name: CoinGold
+                Components:
+                    40bc0789c794df458f3da83107baa90c: !TransformComponent
+                        Id: 759f661c-7548-481a-af49-078368e8b20f
+                        Position: {X: 0.0, Y: 1.0, Z: 0.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 10.0, Z: 10.0}
+                        Children:
+                            b9f600a0fde70749a52b71dd66ab24ac: ref!! 86b4d3de-0942-42dd-8def-6d5e4adf1d3a
+                    76eeb34856ae80488daf19410ab51cf5: !ModelComponent
+                        Id: 5963148a-f658-4a90-afee-0ecf192f0486
+                        Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
+                        Materials: {}
+                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                        Id: 02562d41-d5bd-4875-a4aa-e4ee8f1239f8
+                        CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
+                        Trigger: ref!! 781cbaf4-2a2a-456b-8059-f6ecca28c225
+                        SoundEffect: 3cef4c87-620e-4a6e-a97b-e52adf38838c:Audio/coin_get
+                    e3f8cc6b8cb0c44382b6dea99da7b6b1: !StaticColliderComponent
+                        Id: 6ec6bffa-db88-4902-88ab-232be82ff09c
+                        CollisionGroup: SensorTrigger
+                        CanCollideWith: CharacterFilter
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            ea2081287f443a4aa83ebe876cba60d2: !SphereColliderShapeDesc
+                                Is2D: false
+                                Radius: 0.025
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: 781cbaf4-2a2a-456b-8059-f6ecca28c225
+                        TriggerCondition: StartOnly
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: 867ee466-6e19-4df6-b805-6b1a8f5dbee5
+                InstanceId: a8e106b3-1f45-4235-bbf0-624af3914d98
+        -   Folder: null
+            Entity:
+                Id: d43ca0b8-fa12-42fd-ab2c-90559e4f2650
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 15625aa4-9770-4299-b63d-796085447dc9
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: ede4e698-8819-4839-9abf-970af50023b8
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: 13e7c432-719b-4b9d-be0b-5ea1a396c1d9
         -   Entity:
                 Id: d50babdb-558c-4b02-af52-03fc1186074f
                 Name: Box3x1x1
@@ -6910,6 +7513,18 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             40bc0789c794df458f3da83107baa90c: ref!! 1a88761a-1d68-416a-a054-c5b6e00a0787
+        -   Folder: Coins
+            Entity:
+                Id: e72dd239-638c-47cb-9083-77064d86a1ac
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: 65e1c87c-a870-4f9e-b2c7-f692aa1da0a6
+                        Position: {X: 9.0, Y: 0.0, Z: -1.01004589}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! a525243a-ec35-4fca-9128-6c63af500fbd
         -   Entity:
                 Id: e93f16d8-942e-4f8c-b269-2241daad2045
                 Name: Box3x1x1
@@ -7027,6 +7642,30 @@ Hierarchy:
                 BasePartAsset: d99ba943-2d1a-488c-832b-dc8d63fe9d4b:BlocksPrefabs/Box3x1x1
                 BasePartId: b86036f4-0ce3-4794-9947-a61378390d41
                 InstanceId: aaedf25a-b370-4e7d-8a70-ad9fea84dbfd
+        -   Folder: Coins
+            Entity:
+                Id: ee0f676f-e1da-4c16-989a-d976d671d0dc
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: 12947842-875e-4fe3-aa12-4946bfbdc4ba
+                        Position: {X: 9.0, Y: 0.0, Z: 0.671949148}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! 94204f9c-c794-4ac5-bf14-46e3b508989c
+        -   Folder: Coins
+            Entity:
+                Id: ef0a2db9-b557-4de4-a28e-8ce2c7f7be37
+                Name: CoinGold (5)
+                Components:
+                    862c912f0b61834eb4a45ffdcb8ebcb9: !TransformComponent
+                        Id: 76158e67-b0bf-4a59-82d0-8502c6c26a9b
+                        Position: {X: 7.012285, Y: 0.0, Z: -3.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            40bc0789c794df458f3da83107baa90c: ref!! 528e5fb3-f787-4721-b097-1ce3e99d4d84
         -   Entity:
                 Id: ef70a5bd-b6cf-4dfc-a10a-3fd458d16e9e
                 Name: Box3x1x1
@@ -7305,6 +7944,31 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             a2d6ca1adcf6ec41a4c7d29eb46ea480: ref!! b3b3a09c-a77f-494f-8312-4f734b5542d0
+        -   Folder: null
+            Entity:
+                Id: f9845473-97f4-4d5c-b9c8-0d908aed53ad
+                Name: Point light
+                Components:
+                    b9f600a0fde70749a52b71dd66ab24ac: !TransformComponent
+                        Id: 3d45b133-517c-4adf-a672-8b351ce3ab6f
+                        Position: {X: 0.0, Y: 3.464735E-09, Z: -0.0581285954}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    35701b59a6f3d14a89bd891c23bc95fb: !LightComponent
+                        Id: e487a3d2-1635-4a8c-85e5-54df4060a645
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 0.960625, B: 0.60625}
+                            Radius: 3.0
+                            Shadow:
+                                Size: Small
+                                BiasParameters: {}
+                        Intensity: 10.0
+            Base:
+                BasePartAsset: f31f899d-6803-4d06-869f-8b5a866cf42d:CoinGold
+                BasePartId: debc636f-e0c5-4884-9aa6-be4b8287e96a
+                InstanceId: 2c83e49c-0d47-4514-a489-7f84615e5b26
         -   Entity:
                 Id: fb5f809d-71c0-4b19-a321-29af29f3c097
                 Name: Box3x1x1
