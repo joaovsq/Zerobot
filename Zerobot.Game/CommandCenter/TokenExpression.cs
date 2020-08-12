@@ -13,7 +13,7 @@ namespace Zerobot.CommandCenter
     {
         Move,
         Stop,
-        
+
         MarkerDown,
         MarkerUp,
     }
@@ -30,14 +30,14 @@ namespace Zerobot.CommandCenter
     /// </summary>
     public class TokenExpression
     {
-        private readonly CommandToken token;
-        private readonly List<string> operands;
+        public readonly CommandToken Token;
+        public readonly List<string> Operands;
         private string rawExpression = "";
 
         public TokenExpression(CommandToken token, List<string> operands)
         {
-            this.token = token;
-            this.operands = operands;
+            Token = token;
+            Operands = operands;
         }
 
         public TokenExpression(string expression)
@@ -48,19 +48,19 @@ namespace Zerobot.CommandCenter
                 throw new ArgumentException("Invalid Token Expression.");
             }
 
-            operands = new List<string>();
+            Operands = new List<string>();
             bool tokenFound = false;
             foreach (string word in words)
             {
                 if (tokenFound)
                 {
-                    operands.Add(word);
+                    Operands.Add(word);
                     continue;
                 }
 
                 try
                 {
-                    token = ParseEnumName<CommandToken>(word);
+                    Token = ParseEnumName<CommandToken>(word);
                     tokenFound = true;
                 }
                 catch (ArgumentException)
@@ -85,9 +85,9 @@ namespace Zerobot.CommandCenter
             }
 
             var builder = new StringBuilder();
-            builder.Append(token.ToString());
+            builder.Append(Token.ToString());
 
-            foreach (var operand in operands)
+            foreach (var operand in Operands)
             {
                 builder.Append(" ");
                 builder.Append(operand);

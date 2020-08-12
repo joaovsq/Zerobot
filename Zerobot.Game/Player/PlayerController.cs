@@ -71,6 +71,14 @@ namespace Zerobot.Player
         // The PlayerController will propagate if it is attacking to the AnimationController
         public static readonly EventKey<bool> IsAttackingEventKey = new EventKey<bool>();
 
+        /// <summary>
+        /// the main remote command Queue.
+        /// </summary>
+        [DataMemberIgnore]
+        public static readonly Queue<string> RemoteCommandQueue = new Queue<string>();
+
+        private readonly CommandInterpreter commandInterpreter = new CommandInterpreter();
+
         // Character Component
         private CharacterComponent character;
         private Entity modelChildEntity;
@@ -89,12 +97,6 @@ namespace Zerobot.Player
         private Vector3 CurrentWaypoint => waypointIndex < pathToDestination.Count ? pathToDestination[waypointIndex] : Vector3.Zero;
 
         /// <summary>
-        /// A remote CommandCenter command
-        /// </summary>
-        [DataMemberIgnore]
-        public static readonly Queue<string> RemoteCommandQueue = new Queue<string>();
-
-        /// <summary>
         /// Called when the script is first initialized
         /// </summary>
         public override void Start()
@@ -111,10 +113,12 @@ namespace Zerobot.Player
             if (PunchCollision == null) throw new ArgumentException("Please add a RigidbodyComponent as a PunchCollision to the entity containing PlayerController!");
 
             modelChildEntity = Entity.GetChild(0);
-
             moveDestination = Entity.Transform.WorldMatrix.TranslationVector;
-
             PunchCollision.Enabled = false;
+
+            commandInterpreter.moveHandler = RemoteMove;
+            commandInterpreter.haltHandler = HaltMovement;
+            commandInterpreter.markerHandler = Marker;
         }
 
         /// <summary>
@@ -126,11 +130,8 @@ namespace Zerobot.Player
 
             if (!RemoteCommandQueue.IsNullOrEmpty())
             {
-                string result = RemoteCommandQueue.Dequeue();
-                if (result.Equals("Move up 4"))
-                {
-                    RemoteMove(MaxRunSpeed, new Vector3(4f, 0f, 0f));
-                }
+                string nextCommand = RemoteCommandQueue.Dequeue();
+                commandInterpreter.Execute(nextCommand);
             }
 
             Move(MaxRunSpeed);
@@ -318,7 +319,7 @@ namespace Zerobot.Player
         }
 
         // move triggered by the remote controller
-        private void RemoteMove(float speed, Vector3 direction)
+        private void RemoteMove(Vector3 direction)
         {
             if (attackCooldown > 0)
                 return;
@@ -332,7 +333,15 @@ namespace Zerobot.Player
                 return;
             }
 
-            UpdateMoveTowardsDestination(speed);
+            UpdateMoveTowardsDestination(MaxRunSpeed);
+        }
+
+        /// <summary>
+        /// If the marker is down (down == true) then the character will leave a marked trail.
+        /// </summary>
+        private void Marker(bool down)
+        {
+            // TODO
         }
 
     }
