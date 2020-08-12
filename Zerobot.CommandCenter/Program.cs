@@ -7,16 +7,11 @@ namespace Zerobot.CommandCenter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            while (true)
-            {
-                var input = Console.ReadLine();
+            var panel = new CommandPanel();
+            panel.Start();
 
-                if (input.Equals("exit"))
-                {
-                    break;
-                }
-            }
+            Console.WriteLine("CommandCenter is finished. Press any key to close it.");
+            Console.ReadLine();
         }
     }
 }

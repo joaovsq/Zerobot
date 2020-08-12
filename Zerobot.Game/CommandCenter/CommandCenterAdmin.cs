@@ -28,7 +28,6 @@ namespace Zerobot.CommandCenter
         {
             var context = new CommandCenterContext(currentStrategy);
             context.Start();
-
         }
     }
 }
