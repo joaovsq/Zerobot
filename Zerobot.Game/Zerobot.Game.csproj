@@ -5,6 +5,7 @@
 		<RootNamespace>Zerobot</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
+
 		<PackageReference Include="Stride.Core" Version="4.0.0.1-beta04" PrivateAssets="contentfiles;analyzers" />
 		<PackageReference Include="Stride.Core.Assets.CompilerApp" Version="4.0.0.1-beta04" PrivateAssets="contentfiles;analyzers" IncludeAssets="build" />
 		<PackageReference Include="Stride.Engine" Version="4.0.0.1-beta04" PrivateAssets="contentfiles;analyzers" />

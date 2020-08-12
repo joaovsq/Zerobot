@@ -9,8 +9,10 @@ namespace Zerobot
     {
         static void Main(string[] args)
         {
+            var panel = new CommandPanel();
+            panel.Start();
 
-            var panel = new CommandCenterAdmin();
+            var center = new CommandCenterAdmin();
 
             using (var game = new Game())
             {

@@ -30,8 +30,6 @@ namespace Zerobot.CommandCenter
                 ipcProcess.StartInfo.RedirectStandardOutput = true;
                 ipcProcess.StartInfo.RedirectStandardError = true;
                 ipcProcess.Start();
-
-                ipcProcess.WaitForExit();
             }
             else
             {

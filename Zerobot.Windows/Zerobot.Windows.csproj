@@ -14,8 +14,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Zerobot.Game\Zerobot.Game.csproj" />
 		<ProjectReference Include="..\Zerobot.CommandCenter\Zerobot.CommandCenter.csproj" />
+		<ProjectReference Include="..\Zerobot.Game\Zerobot.Game.csproj" />
 	</ItemGroup>
 
+	<Target Name="CopyReferencesContent" AfterTargets="AfterBuild">
+		<Copy SourceFiles="..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json" DestinationFolder="$(OutDir)" />
+	</Target>
+	
 </Project>
