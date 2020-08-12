@@ -13,8 +13,7 @@ namespace Zerobot.CommandCenter
     {
         Move,
         Stop,
-        Speed,
-
+        
         MarkerDown,
         MarkerUp,
     }
@@ -43,7 +42,7 @@ namespace Zerobot.CommandCenter
 
         public TokenExpression(string expression)
         {
-            var words = expression.Split(" ");
+            var words = expression.Split(' ');
             if (words.Length < 2)
             {
                 throw new ArgumentException("Invalid Token Expression.");
