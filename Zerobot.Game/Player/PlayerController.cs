@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Stride.Core;
+using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
 using Stride.Engine;
 using Stride.Engine.Events;
@@ -24,7 +27,7 @@ namespace Zerobot.Player
         /// </summary>
         [Display("Run Speed")]
         public float MaxRunSpeed { get; set; } = 10;
-        
+
         /// <summary>
         /// The distance from the destination at which the character will stop moving
         /// </summary>
@@ -83,8 +86,13 @@ namespace Zerobot.Player
         private Vector3 moveDestination;
 
         private bool ReachedDestination => waypointIndex >= pathToDestination.Count;
-
         private Vector3 CurrentWaypoint => waypointIndex < pathToDestination.Count ? pathToDestination[waypointIndex] : Vector3.Zero;
+
+        /// <summary>
+        /// A remote CommandCenter command
+        /// </summary>
+        [DataMemberIgnore]
+        public static readonly Queue<string> RemoteCommandQueue = new Queue<string>();
 
         /// <summary>
         /// Called when the script is first initialized
@@ -116,12 +124,24 @@ namespace Zerobot.Player
         {
             Attack();
 
+            if (!RemoteCommandQueue.IsNullOrEmpty())
+            {
+                string result = RemoteCommandQueue.Dequeue();
+                if (result.Equals("Move up 4"))
+                {
+                    RemoteMove(MaxRunSpeed, new Vector3(4f, 0f, 0f));
+                }
+            }
+
             Move(MaxRunSpeed);
         }
 
+        /// <summary>
+        /// Executes the player attack
+        /// </summary>
         private void Attack()
         {
-            var dt = (float) Game.UpdateTime.Elapsed.TotalSeconds;
+            var dt = (float)Game.UpdateTime.Elapsed.TotalSeconds;
             attackCooldown = (attackCooldown > 0) ? attackCooldown - dt : 0f;
 
             PunchCollision.Enabled = (attackCooldown > 0);
@@ -207,7 +227,7 @@ namespace Zerobot.Player
                 // Check to see if an intermediate point was passed by projecting the position along the path
                 if (pathToDestination.Count > 0 && waypointIndex > 0 && waypointIndex != pathToDestination.Count - 1)
                 {
-                    Vector3 pointNormal = CurrentWaypoint - pathToDestination[waypointIndex-1];
+                    Vector3 pointNormal = CurrentWaypoint - pathToDestination[waypointIndex - 1];
                     pointNormal.Normalize();
                     float current = Vector3.Dot(Entity.Transform.WorldMatrix.TranslationVector, pointNormal);
                     float target = Vector3.Dot(CurrentWaypoint, pointNormal);
@@ -255,7 +275,7 @@ namespace Zerobot.Player
                 // Character orientation
                 if (moveDirection.Length() > 0.001)
                 {
-                    yawOrientation = MathUtil.RadiansToDegrees((float) Math.Atan2(-moveDirection.Z, moveDirection.X) + MathUtil.PiOverTwo);
+                    yawOrientation = MathUtil.RadiansToDegrees((float)Math.Atan2(-moveDirection.Z, moveDirection.X) + MathUtil.PiOverTwo);
                 }
                 modelChildEntity.Transform.Rotation = Quaternion.RotationYawPitchRoll(MathUtil.DegreesToRadians(yawOrientation), 0, 0);
             }
@@ -296,5 +316,24 @@ namespace Zerobot.Player
 
             UpdateMoveTowardsDestination(speed);
         }
+
+        // move triggered by the remote controller
+        private void RemoteMove(float speed, Vector3 direction)
+        {
+            if (attackCooldown > 0)
+                return;
+
+            var currentPos = modelChildEntity.Transform.WorldMatrix.TranslationVector;
+            UpdateDestination(currentPos + direction);
+
+            if (!isRunning)
+            {
+                RunSpeedEventKey.Broadcast(0);
+                return;
+            }
+
+            UpdateMoveTowardsDestination(speed);
+        }
+
     }
 }

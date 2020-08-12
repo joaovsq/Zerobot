@@ -69,8 +69,6 @@ namespace Zerobot.CommandCenter
             {
                 using (StreamWriter writer = new StreamWriter(pipeClient))
                 {
-                    writer.AutoFlush = true;
-
                     while (true)
                     {
                         Console.Write(">> ");
@@ -84,12 +82,13 @@ namespace Zerobot.CommandCenter
                         {
                             var expression = new TokenExpression(input);
                             writer.WriteLine(expression.ToString());
+                            writer.Flush();
 
                             pipeClient.WaitForPipeDrain();
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"Error parsing your command: {e.Message}");
+                            Console.WriteLine($"Error parsing your command: {e.Message} | Stacktrace: \n {e.StackTrace}");
                             continue;
                         }
                     }

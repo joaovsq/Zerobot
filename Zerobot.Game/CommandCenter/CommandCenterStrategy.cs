@@ -6,6 +6,8 @@ using System.IO;
 using System.IO.Pipes;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
+using Zerobot.Player;
 
 namespace Zerobot.CommandCenter
 {
@@ -46,13 +48,21 @@ namespace Zerobot.CommandCenter
                 {
                     using (StreamReader reader = new StreamReader(pipeServer))
                     {
-                        var rawCommand = reader.ReadLine();
-                        Console.WriteLine($"Raw command: {rawCommand}");
+
+                        while (pipeServer.IsConnected)
+                        {
+                            //reader.ReadLineAsync().ContinueWith((rawCommand) =>
+                            //{
+                            //    PlayerController.RemoteCommandQueue.Enqueue(rawCommand.Result);
+                            //});
+
+                            PlayerController.RemoteCommandQueue.Enqueue(reader.ReadLine());
+                        }
                     }
                 }
                 catch (IOException e)
                 {
-                    Console.WriteLine("[SERVER] Error: {0}", e.Message);
+                    Console.WriteLine($"[CommandCenter SERVER] Error: {e.Message}");
                 }
             }
         }

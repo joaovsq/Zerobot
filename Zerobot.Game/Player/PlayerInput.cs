@@ -35,7 +35,6 @@ namespace Zerobot.Player
 
         public override void Update()
         {
-            // TODO: abstract this to somewhere else, we have to deal with mobile inputs
             if (Input.HasKeyboard && Input.IsKeyDown(Keys.Escape))
             {
                 Environment.Exit(0);

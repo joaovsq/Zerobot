@@ -1,5 +1,3 @@
-
-
 using Stride.Core.Mathematics;
 using Stride.Input;
 

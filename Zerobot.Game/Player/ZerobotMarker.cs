@@ -7,7 +7,7 @@ namespace Zerobot.Player
     /// <summary>
     /// 
     /// </summary>
-    class ZerobotPen
+    class ZerobotMarker
     {
     }
 }
