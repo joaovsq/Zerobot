@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Zerobot.CommandCenter
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CommandCenterAdmin
     {
         private ICommandCenterStrategy currentStrategy;

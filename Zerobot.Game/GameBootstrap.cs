@@ -16,7 +16,9 @@ namespace Zerobot
 
         public static void Run()
         {
-            var commandCenterThread = new Thread(StartCommandCenter);
+            var admin = new CommandCenterAdmin();
+
+            var commandCenterThread = new Thread(admin.StartCommandCenter);
             commandCenterThread.Start();
 
             using (var game = new Game())
@@ -25,10 +27,5 @@ namespace Zerobot
             }
         }
 
-        static void StartCommandCenter()
-        {
-            var context = new CommandCenterContext(new DesktopStrategy());
-            context.Start();
-        }
     }
 }

@@ -10,7 +10,9 @@ namespace Zerobot.CommandCenter
     /// Controls the Zerobot.CommandCenter integration.
     /// 
     /// If we are running on a Desktop platform we use IPC.
-    /// If the CommandCenter is running on other platforms (android, ios, etc) then we have to use the network
+    /// If the CommandCenter is running on other platforms (android, ios, etc) then we have to use the network.
+    /// 
+    /// IMPORTANT: All implementations of this interface MUST be thread safe. the Run method will be called from a different thread.
     /// </summary>
     public interface ICommandCenterStrategy
     {

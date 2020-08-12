@@ -11,7 +11,9 @@ using Zerobot.Player;
 
 namespace Zerobot.CommandCenter
 {
-
+    /// <summary>
+    /// Strategy that should run in Desktop platforms.
+    /// </summary>
     public class DesktopStrategy : ICommandCenterStrategy
     {
         /// the active IPC command panel process
@@ -51,11 +53,6 @@ namespace Zerobot.CommandCenter
 
                         while (pipeServer.IsConnected)
                         {
-                            //reader.ReadLineAsync().ContinueWith((rawCommand) =>
-                            //{
-                            //    PlayerController.RemoteCommandQueue.Enqueue(rawCommand.Result);
-                            //});
-
                             PlayerController.RemoteCommandQueue.Enqueue(reader.ReadLine());
                         }
                     }

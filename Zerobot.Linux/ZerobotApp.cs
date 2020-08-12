@@ -4,7 +4,7 @@ namespace Zerobot
     {
         static void Main(string[] args)
         {
-            Bootstrap.Run();
+            GameBootstrap.Run();
         }
     }
 }
