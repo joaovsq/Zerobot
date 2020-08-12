@@ -12,7 +12,7 @@ namespace Zerobot
             var panel = new CommandPanel();
             panel.Start();
 
-            var center = new CommandCenterAdmin();
+            var center = new DesktopStrategy();
 
             using (var game = new Game())
             {
