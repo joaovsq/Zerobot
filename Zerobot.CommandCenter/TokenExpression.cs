@@ -33,6 +33,7 @@ namespace Zerobot.CommandCenter
     {
         private readonly CommandToken token;
         private readonly List<string> operands;
+        private string rawExpression = "";
 
         public TokenExpression(CommandToken token, List<string> operands)
         {
@@ -73,15 +74,23 @@ namespace Zerobot.CommandCenter
             {
                 throw new ArgumentException("The given expression doesn't contain a valid CommandToken");
             }
+
+            rawExpression = expression;
         }
 
         public override string ToString()
         {
+            if (!string.IsNullOrWhiteSpace(rawExpression))
+            {
+                return rawExpression;
+            }
+
             var builder = new StringBuilder();
             builder.Append(token.ToString());
 
             foreach (var operand in operands)
             {
+                builder.Append(" ");
                 builder.Append(operand);
             }
 

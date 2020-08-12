@@ -83,7 +83,7 @@ namespace Zerobot.CommandCenter
                         try
                         {
                             var expression = new TokenExpression(input);
-                            writer.Write(expression.ToString());
+                            writer.WriteLine(expression.ToString());
 
                             pipeClient.WaitForPipeDrain();
                         }
