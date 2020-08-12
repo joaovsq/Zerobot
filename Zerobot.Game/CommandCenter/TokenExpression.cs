@@ -43,10 +43,6 @@ namespace Zerobot.CommandCenter
         public TokenExpression(string expression)
         {
             var words = expression.Split(' ');
-            if (words.Length < 2)
-            {
-                throw new ArgumentException("Invalid Token Expression.");
-            }
 
             Operands = new List<string>();
             bool tokenFound = false;
@@ -72,6 +68,11 @@ namespace Zerobot.CommandCenter
             if (!tokenFound)
             {
                 throw new ArgumentException("The given expression doesn't contain a valid CommandToken");
+            }
+
+            if (Token != CommandToken.Stop && words.Length < 2)
+            {
+                throw new ArgumentException("Invalid Token Expression.");
             }
 
             rawExpression = expression;

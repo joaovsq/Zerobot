@@ -88,7 +88,7 @@ namespace Zerobot.CommandCenter
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"Error parsing your command: {e.Message} | Stacktrace: \n {e.StackTrace}");
+                            Console.WriteLine($"Error parsing your command: {e.Message}");
                             continue;
                         }
                     }
