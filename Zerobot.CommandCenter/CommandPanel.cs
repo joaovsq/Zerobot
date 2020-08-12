@@ -20,9 +20,9 @@ namespace Zerobot.CommandCenter
     public class CommandPanel
     {
         private readonly PanelMode mode;
+        readonly string[] args;
 
-
-        public CommandPanel(PanelMode mode = PanelMode.CONSOLE)
+        public CommandPanel(string[] args, PanelMode mode = PanelMode.CONSOLE)
         {
             this.mode = mode;
 
@@ -30,6 +30,8 @@ namespace Zerobot.CommandCenter
             {
                 Environment.FailFast("Sorry, we still don't have support for GUI mode.");
             }
+
+            this.args = args;
         }
 
         /// <summary>
@@ -40,11 +42,11 @@ namespace Zerobot.CommandCenter
             switch (mode)
             {
                 case PanelMode.CONSOLE:
-                    ConsoleMode();
+                    ConsoleMode(args);
                     break;
 
                 case PanelMode.GUI:
-                    GuiMode();
+                    GuiMode(args);
                     break;
 
                 default:
@@ -53,10 +55,11 @@ namespace Zerobot.CommandCenter
         }
 
 
-        private void ConsoleMode()
+        private void ConsoleMode(string[] args)
         {
             while (true)
             {
+                Console.Write(">> ");
                 string input = Console.ReadLine();
 
                 if (input.Equals("exit"))
@@ -66,7 +69,7 @@ namespace Zerobot.CommandCenter
             }
         }
 
-        private void GuiMode()
+        private void GuiMode(string[] args)
         {
             // TODO (jv): implement
         }

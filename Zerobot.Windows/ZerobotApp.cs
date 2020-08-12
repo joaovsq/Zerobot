@@ -9,9 +9,6 @@ namespace Zerobot
     {
         static void Main(string[] args)
         {
-            var panel = new CommandPanel();
-            panel.Start();
-
             var center = new DesktopStrategy();
 
             using (var game = new Game())
