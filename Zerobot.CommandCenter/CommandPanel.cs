@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Pipes;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -54,17 +56,43 @@ namespace Zerobot.CommandCenter
             }
         }
 
-
+        /// <summary>
+        /// Starts the CommandPanel in console mode.
+        ///  
+        /// This mode expects the OPcodes (CommandToken) directly in the console and send them synchronously to the Zerobot process.
+        /// </summary>
+        /// <param name="args">cmd args</param>
         private void ConsoleMode(string[] args)
         {
-            while (true)
+            using (PipeStream pipeClient =
+                new AnonymousPipeClientStream(PipeDirection.Out, args[0]))
             {
-                Console.Write(">> ");
-                string input = Console.ReadLine();
-
-                if (input.Equals("exit"))
+                using (StreamWriter writer = new StreamWriter(pipeClient))
                 {
-                    break;
+                    writer.AutoFlush = true;
+
+                    while (true)
+                    {
+                        Console.Write(">> ");
+                        string input = Console.ReadLine();
+                        if (input.Equals("exit"))
+                        {
+                            break;
+                        }
+
+                        try
+                        {
+                            var expression = new TokenExpression(input);
+                            writer.Write(expression.ToString());
+
+                            pipeClient.WaitForPipeDrain();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Error parsing your command: {e.Message}");
+                            continue;
+                        }
+                    }
                 }
             }
         }

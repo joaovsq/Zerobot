@@ -21,10 +21,13 @@ namespace Zerobot.CommandCenter
         {
             log.Debug("Starting the CommandCenter Desktop strategy...");
 
-            ipcProcess.StartInfo.FileName = "Zerobot.CommandCenter.exe";
-            ipcProcess.StartInfo.Arguments = "";
-            ipcProcess.StartInfo.RedirectStandardOutput = true;
-            ipcProcess.StartInfo.RedirectStandardError = true;
+            string fileName = "Zerobot.CommandCenter";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                fileName += ".exe";
+            }
+
+            ipcProcess.StartInfo.FileName = fileName;
         }
 
         public void Run()
@@ -32,34 +35,21 @@ namespace Zerobot.CommandCenter
             log.Info("Running DesktopStrategy...");
 
             using (AnonymousPipeServerStream pipeServer =
-                new AnonymousPipeServerStream(PipeDirection.Out,
+                new AnonymousPipeServerStream(PipeDirection.In,
                 HandleInheritability.Inheritable))
             {
-                Console.WriteLine("[SERVER] Current TransmissionMode: {0}.",
-                    pipeServer.TransmissionMode);
-
                 ipcProcess.StartInfo.Arguments = pipeServer.GetClientHandleAsString();
                 ipcProcess.Start();
 
                 pipeServer.DisposeLocalCopyOfClientHandle();
-
                 try
                 {
-                    // Read user input and send that to the client process.
-                    using (StreamWriter sw = new StreamWriter(pipeServer))
+                    using (StreamReader reader = new StreamReader(pipeServer))
                     {
-                        sw.AutoFlush = true;
-                        // Send a 'sync message' and wait for client to receive it.
-                        sw.WriteLine("SYNC");
-                        pipeServer.WaitForPipeDrain();
-                        
-                        // Send the console input to the client process.
-                        Console.Write("[SERVER] Enter text: ");
-                        sw.WriteLine(Console.ReadLine());
+                        var rawCommand = reader.ReadLine();
+                        Console.WriteLine($"Raw command: {rawCommand}");
                     }
                 }
-                // Catch the IOException that is raised if the pipe is broken
-                // or disconnected.
                 catch (IOException e)
                 {
                     Console.WriteLine("[SERVER] Error: {0}", e.Message);

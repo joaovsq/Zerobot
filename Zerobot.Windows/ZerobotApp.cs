@@ -9,7 +9,8 @@ namespace Zerobot
     {
         static void Main(string[] args)
         {
-            var center = new DesktopStrategy();
+            var context = new CommandCenterContext(new DesktopStrategy());
+            context.Start();
 
             using (var game = new Game())
             {

@@ -26,6 +26,8 @@ namespace Zerobot.CommandCenter
     /// 
     /// TokenExpression(Move, [up, 4]);
     /// TokenExpression.ToString() = Move up 4 
+    /// 
+    /// Operands before the CommandToken will be ignored
     /// </summary>
     public class TokenExpression
     {
@@ -45,7 +47,7 @@ namespace Zerobot.CommandCenter
             {
                 throw new ArgumentException("Invalid Token Expression.");
             }
-            
+
             operands = new List<string>();
             bool tokenFound = false;
             foreach (string word in words)
@@ -58,15 +60,19 @@ namespace Zerobot.CommandCenter
 
                 try
                 {
-                    token = (CommandToken)Enum.Parse(typeof(CommandToken), word);
+                    token = ParseEnumName<CommandToken>(word);
+                    tokenFound = true;
                 }
                 catch (ArgumentException)
                 {
-                    tokenFound = true;
+                    // ignores if it is not a CommandToken, this garantees that the CommandToken will always be the first in a expression
                 }
             }
 
-            throw new ArgumentException("The given expression doesn't contain a valid CommandToken");
+            if (!tokenFound)
+            {
+                throw new ArgumentException("The given expression doesn't contain a valid CommandToken");
+            }
         }
 
         public override string ToString()
@@ -80,6 +86,28 @@ namespace Zerobot.CommandCenter
             }
 
             return builder.ToString();
+        }
+
+        /// <summary>
+        /// Checks if the given string is equals to a value name inside the given Enum type. For example:
+        /// 
+        /// enum value: Color.Red
+        /// value given: Red
+        /// 
+        /// In this case this method would return Color.Red
+        /// </summary>
+        /// <returns> The enum object </returns>
+        public static T ParseEnumName<T>(string value) where T : Enum
+        {
+            foreach (T enumValue in Enum.GetValues(typeof(T)))
+            {
+                if (enumValue.ToString().Equals(value))
+                {
+                    return enumValue;
+                }
+            }
+
+            throw new ArgumentException();
         }
     }
 }

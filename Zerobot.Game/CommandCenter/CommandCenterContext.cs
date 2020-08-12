@@ -11,7 +11,7 @@ namespace Zerobot.CommandCenter
     /// If we are running on a Desktop platform we use IPC.
     /// If the CommandCenter is running on other platforms (android, ios, etc) then we have to use the network
     /// </summary>
-    interface ICommandCenterStrategy
+    public interface ICommandCenterStrategy
     {
         void Run();
     }
@@ -19,7 +19,7 @@ namespace Zerobot.CommandCenter
     /// <summary>
     /// 
     /// </summary>
-    class CommandCenterContext
+    public class CommandCenterContext
     {
         private readonly ICommandCenterStrategy strategy;
 
