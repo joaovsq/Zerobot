@@ -13,9 +13,7 @@ namespace Zerobot.CommandCenter
     {
         Move,
         Stop,
-
-        MarkerDown,
-        MarkerUp,
+        Marker
     }
 
     /// <summary>

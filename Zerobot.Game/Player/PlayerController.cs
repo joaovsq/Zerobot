@@ -47,11 +47,6 @@ namespace Zerobot.Player
         // The PlayerController will propagate its speed to the AnimationController
         public static readonly EventKey<float> RunSpeedEventKey = new EventKey<float>();
 
-        // Allow some inertia to the movement
-        private Vector3 moveDirection = Vector3.Zero;
-
-        private bool isRunning = false;
-
         // Attacking
         [Display("Punch Collision")]
         public RigidbodyComponent PunchCollision { get; set; }
@@ -71,6 +66,8 @@ namespace Zerobot.Player
         // The PlayerController will propagate if it is attacking to the AnimationController
         public static readonly EventKey<bool> IsAttackingEventKey = new EventKey<bool>();
 
+        public Prefab MarkerEffect { get; set; }
+
         /// <summary>
         /// the main remote command Queue.
         /// </summary>
@@ -78,6 +75,11 @@ namespace Zerobot.Player
         public static readonly Queue<string> RemoteCommandQueue = new Queue<string>();
 
         private readonly CommandInterpreter commandInterpreter = new CommandInterpreter();
+        private bool markerActivated = false;
+
+        // Allow some inertia to the movement
+        private Vector3 moveDirection = Vector3.Zero;
+        private bool isRunning = false;
 
         // Character Component
         private CharacterComponent character;
@@ -118,7 +120,7 @@ namespace Zerobot.Player
 
             commandInterpreter.moveHandler = RemoteMove;
             commandInterpreter.haltHandler = HaltMovement;
-            commandInterpreter.markerHandler = Marker;
+            commandInterpreter.markerHandler = (bool down) => markerActivated = down;
         }
 
         /// <summary>
@@ -127,6 +129,7 @@ namespace Zerobot.Player
         public override void Update()
         {
             Attack();
+            Marker();
 
             if (!RemoteCommandQueue.IsNullOrEmpty())
             {
@@ -337,11 +340,16 @@ namespace Zerobot.Player
         }
 
         /// <summary>
-        /// If the marker is down (down == true) then the character will leave a marked trail.
+        /// If the marker is activated (down == true) then the character will leave a marked trail.
         /// </summary>
-        private void Marker(bool down)
+        private void Marker()
         {
-            // TODO
+            if (markerActivated && MarkerEffect != null)
+            {
+                //this.SpawnPrefabInstance(MarkerEffect, null, 20f, modelChildEntity.Transform.WorldMatrix);
+
+
+            }
         }
 
     }

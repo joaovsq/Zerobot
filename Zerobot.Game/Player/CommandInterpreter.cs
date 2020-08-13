@@ -29,15 +29,21 @@ namespace Zerobot.Player
                         // TODO: optimize this thing, catch branches are terrible
                         try
                         {
-                            moveHandler(GetDirectionVector(expression.Operands[0], float.Parse(expression.Operands[1])));
+                            moveHandler(GetMoveDirectionVector(expression.Operands[0], float.Parse(expression.Operands[1])));
                         }
                         catch (Exception)
                         {
-                            moveHandler(GetDirectionVector(expression.Operands[0]));
+                            moveHandler(GetMoveDirectionVector(expression.Operands[0]));
                         }
                         break;
+
                     case CommandToken.Stop:
                         haltHandler();
+                        break;
+
+                    case CommandToken.Marker:
+                        bool isDown = MarkerDown(expression.Operands[0]);
+                        markerHandler(isDown);
                         break;
 
                     default:
@@ -50,7 +56,7 @@ namespace Zerobot.Player
             }
         }
 
-        private Vector3 GetDirectionVector(string direction, float lenght = 1f)
+        private Vector3 GetMoveDirectionVector(string direction, float lenght = 1f)
         {
 
             if (direction.Equals("up"))
@@ -71,6 +77,16 @@ namespace Zerobot.Player
             }
 
             return new Vector3();
+        }
+
+        private bool MarkerDown(string operand)
+        {
+            if (operand.Equals("down"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
