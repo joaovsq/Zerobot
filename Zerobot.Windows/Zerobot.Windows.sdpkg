@@ -2,7 +2,7 @@
 SerializedVersion: {Assets: 3.1.0.0}
 Meta:
     Name: Zerobot.Windows
-    Version: 1.0.0.0
+    Version: 1.0.0
     Authors: []
     Owners: []
     Dependencies: null

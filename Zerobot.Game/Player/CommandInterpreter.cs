@@ -11,10 +11,14 @@ namespace Zerobot.Player
 
         public delegate void Move(Vector3 direction);
         public delegate void Halt();
+        public delegate void Beep();
+        public delegate void Signal(bool on);
         public delegate void Marker(bool down);
 
         public Move moveHandler;
         public Halt haltHandler;
+        public Beep beepHandler;
+        public Signal signalHandler;
         public Marker markerHandler;
 
         public void Execute(string rawCommand)
@@ -41,8 +45,17 @@ namespace Zerobot.Player
                         haltHandler();
                         break;
 
+                    case CommandToken.Beep:
+                        beepHandler();
+                        break;
+
+                    case CommandToken.Signal:
+                        bool isOn = expression.Operands[0].Equals("on");
+                        signalHandler(isOn);
+                        break;
+
                     case CommandToken.Marker:
-                        bool isDown = MarkerDown(expression.Operands[0]);
+                        bool isDown = expression.Operands[0].Equals("down");
                         markerHandler(isDown);
                         break;
 
@@ -79,14 +92,5 @@ namespace Zerobot.Player
             return new Vector3();
         }
 
-        private bool MarkerDown(string operand)
-        {
-            if (operand.Equals("down"))
-            {
-                return true;
-            }
-
-            return false;
-        }
     }
 }

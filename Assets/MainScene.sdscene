@@ -3272,7 +3272,7 @@ Hierarchy:
                 Components:
                     b296752080481e41b569d385767428ce: !TransformComponent
                         Id: 207596b2-4880-411e-b569-d385767428ce
-                        Position: {X: -15.0, Y: 0.0967886448, Z: -5.0}
+                        Position: {X: -15.0, Y: 1.10822332, Z: -5.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
@@ -3307,7 +3307,8 @@ Hierarchy:
                         PunchCollision: ref!! f55cf113-4fc6-42b5-9ce1-a586368259bd
                         AttackDistance: 1.25
                         AttackCooldown: 0.65
-                        MarkerEffect: 018ccc68-e6ef-4e82-a027-d2e2672002a2:VFXPrefabs/vfx-ClickEffect
+                        MarkerEffect: 0cd247ff-be89-454a-893c-550e25080970:LootGoldCoin
+                        BeepEffect: 3e024c71-300d-4da2-b02e-6ca28f1640bf:Audio/scream
                     809bf66aef692646891c293be4ca17b2: !Zerobot.Player.PlayerInput,Zerobot.Game
                         Id: 6af69b80-69ef-4626-891c-293be4ca17b2
                         ControllerIndex: 0
@@ -3320,6 +3321,43 @@ Hierarchy:
                         Id: 627bae46-b057-4ec8-8a26-b517d4b95492
                         NavigationMesh: 022b2e18-945a-427c-8aaf-24da84ccf852:NavigationMesh
                         GroupId: 9398904c-72b7-ca9b-e966-23346704ae98
+                    a298905259527c7d11a61b542515e13d: !ParticleSystemComponent
+                        Id: 03c6b4bc-62a0-4be3-b583-e22f17573dd1
+                        Control:
+                            ResetSeconds: 5.0
+                            Control: Play
+                        Color: {R: 0.97, G: 0.0, B: 0.0, A: 1.0}
+                        Speed: 1.0
+                        ParticleSystem:
+                            Settings: {}
+                            BoundingShape: null
+                            Emitters:
+                                618339246154d8faa4827ed8dc4f0b42:
+                                    EmitterName: Rock n' roll
+                                    ParticleLifetime: {X: 1.0, Y: 1.0}
+                                    ShapeBuilder: !ShapeBuilderTrail
+                                        SmoothingPolicy: Best
+                                        Segments: 0
+                                        EdgePolicy: Edge
+                                        TextureCoordinatePolicy: AsIs
+                                        TexCoordsFactor: 0.0
+                                        UVRotate:
+                                            FlipX: false
+                                            FlipY: false
+                                            UVClockwise: Degree0
+                                    Material: !ParticleMaterialComputeColor
+                                        ComputeColor: !ComputeTextureColor
+                                            Texture: a0b9eed2-f962-4d8f-b0a9-324a4e39d994:Textures/Ring01
+                                            FallbackValue:
+                                                Value: {R: 0.2057878, G: 0.88, B: 0.004399996, A: 1.0}
+                                            Scale: {X: 1.0, Y: 1.0}
+                                            Offset: {X: 0.0, Y: 0.0}
+                                            Swizzle: null
+                                        UVBuilder: null
+                                        ForceTexCoords: false
+                                    Spawners: {}
+                                    Initializers: {}
+                                    Updaters: {}
         -   Folder: Platform/Walls
             Entity:
                 Id: 6007ab76-1be0-44d1-aee4-55e13a22f5b5

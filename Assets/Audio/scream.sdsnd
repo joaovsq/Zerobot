@@ -1,0 +1,8 @@
+!Sound
+Id: 3e024c71-300d-4da2-b02e-6ca28f1640bf
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../../Resources/Audio/scream.wav
+CompressionRatio: 15
+StreamFromDisk: false
+Spatialized: false

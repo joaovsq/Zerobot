@@ -10,15 +10,25 @@ namespace Zerobot.Core
 {
     public static class Utils
     {
+
+        public static void SpawnModel(this ScriptComponent script, Entity source, Matrix localMatrix)
+        {
+            if (source == null)
+                return;
+
+            var entityMatrix = source.Transform.LocalMatrix * localMatrix;
+            entityMatrix.Decompose(out source.Transform.Scale, out source.Transform.Rotation, out source.Transform.Position);
+
+            script.SceneSystem.SceneInstance.RootScene.Entities.Add(source);
+        }
+
         public static void SpawnPrefabModel(this ScriptComponent script, Prefab source, Entity attachEntity, Matrix localMatrix, Vector3 forceImpulse)
         {
             if (source == null)
                 return;
 
-            // Clone
             var spawnedEntities = source.Instantiate();
 
-            // Add
             foreach (var prefabEntity in spawnedEntities)
             {
                 prefabEntity.Transform.UpdateLocalMatrix();
@@ -164,7 +174,7 @@ namespace Zerobot.Core
             foreach (var hitResult in result)
             {
                 ClickType type = ClickType.Empty;
-                
+
                 var staticBody = hitResult.Collider as StaticColliderComponent;
                 if (staticBody != null)
                 {

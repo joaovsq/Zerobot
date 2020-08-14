@@ -2,25 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Stride.Audio;
 using Stride.Core;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
+using Stride.Core.Shaders.Ast;
 using Stride.Engine;
 using Stride.Engine.Events;
+using Stride.Extensions;
+using Stride.Graphics;
+using Stride.Graphics.GeometricPrimitives;
 using Stride.Navigation;
 using Stride.Physics;
+using Stride.Rendering;
 using Zerobot.Core;
 
 namespace Zerobot.Player
 {
     public class PlayerController : SyncScript
     {
-        // The character controller does only two things - moves the character and makes it attack close targets
-        //  If the character is too far from its target it will run after it until it's close enough then halt movement and attack
-        //  If the character is walking towards a specific location instead it will run to it then halt movement when close enough
-
-        private readonly EventReceiver<ClickResult> moveDestinationEvent =
-            new EventReceiver<ClickResult>(PlayerInput.MoveDestinationEventKey);
 
         /// <summary>
         /// The maximum speed the character can run at
@@ -47,7 +47,6 @@ namespace Zerobot.Player
         // The PlayerController will propagate its speed to the AnimationController
         public static readonly EventKey<float> RunSpeedEventKey = new EventKey<float>();
 
-        // Attacking
         [Display("Punch Collision")]
         public RigidbodyComponent PunchCollision { get; set; }
 
@@ -68,14 +67,22 @@ namespace Zerobot.Player
 
         public Prefab MarkerEffect { get; set; }
 
+        [Display("Beep Sound")]
+        public Sound BeepEffect { get; set; }
+
         /// <summary>
         /// the main remote command Queue.
         /// </summary>
         [DataMemberIgnore]
         public static readonly Queue<string> RemoteCommandQueue = new Queue<string>();
 
-        private readonly CommandInterpreter commandInterpreter = new CommandInterpreter();
+        private static readonly CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+        private SoundInstance beepSoundInstance;
+
         private bool markerActivated = false;
+        private static readonly List<Entity> markerTrailEntities = new List<Entity>();
+        private Entity markerActiveTrail;
 
         // Allow some inertia to the movement
         private Vector3 moveDirection = Vector3.Zero;
@@ -98,6 +105,9 @@ namespace Zerobot.Player
         private bool ReachedDestination => waypointIndex >= pathToDestination.Count;
         private Vector3 CurrentWaypoint => waypointIndex < pathToDestination.Count ? pathToDestination[waypointIndex] : Vector3.Zero;
 
+        private readonly EventReceiver<ClickResult> moveDestinationEvent =
+            new EventReceiver<ClickResult>(PlayerInput.MoveDestinationEventKey);
+
         /// <summary>
         /// Called when the script is first initialized
         /// </summary>
@@ -105,22 +115,69 @@ namespace Zerobot.Player
         {
             base.Start();
 
-            // Get the navigation component on the same entity as this script
             navigation = Entity.Get<NavigationComponent>();
-
-            // Will search for an CharacterComponent within the same entity as this script
             character = Entity.Get<CharacterComponent>();
             if (character == null) throw new ArgumentException("Please add a CharacterComponent to the entity containing PlayerController!");
-
             if (PunchCollision == null) throw new ArgumentException("Please add a RigidbodyComponent as a PunchCollision to the entity containing PlayerController!");
 
             modelChildEntity = Entity.GetChild(0);
             moveDestination = Entity.Transform.WorldMatrix.TranslationVector;
             PunchCollision.Enabled = false;
 
+            beepSoundInstance = BeepEffect?.CreateInstance();
+            beepSoundInstance.Stop();
+
             commandInterpreter.moveHandler = RemoteMove;
             commandInterpreter.haltHandler = HaltMovement;
-            commandInterpreter.markerHandler = (bool down) => markerActivated = down;
+            commandInterpreter.beepHandler = PlayBeep;
+            commandInterpreter.signalHandler = SignalOn;
+
+            commandInterpreter.markerHandler = (bool down) =>
+            {
+                // if this is a switch from deactivated to activated.
+                if (!markerActivated && down)
+                {
+                    var entity = new Entity();
+                    var model = new Model();
+                    entity.GetOrCreate<ModelComponent>().Model = model;
+
+                    var vertices = new VertexPositionTexture[3];
+                    vertices[0].Position = new Vector3(0f, 0f, 0f);
+                    vertices[1].Position = new Vector3(0f, 0f, 10f);
+                    var vertexBuffer = Stride.Graphics.Buffer.Vertex.New(GraphicsDevice, vertices,
+                                                                         GraphicsResourceUsage.Dynamic);
+                    int[] indices = { 0, 1 };
+                    var indexBuffer = Stride.Graphics.Buffer.Index.New(GraphicsDevice, indices);
+                    var mesh = new Mesh
+                    {
+                        //Draw = GeometricPrimitive.Cylinder.New(GraphicsDevice).ToMeshDraw()
+                        Draw = new MeshDraw
+                        {
+                            PrimitiveType = PrimitiveType.LineList,
+                            DrawCount = indices.Length,
+                            IndexBuffer = new IndexBufferBinding(indexBuffer, true, indices.Length),
+                            VertexBuffers = new[] { new VertexBufferBinding(vertexBuffer,
+                                  VertexPositionTexture.Layout, vertexBuffer.ElementCount) },
+                        }
+                    };
+
+                    model.Meshes.Add(mesh);
+                    Material material = Content.Load<Material>("Materials/BodyGray");
+                    model.Materials.Add(material);
+
+                    var verts = new VertexPositionTexture[3];
+                    verts[0].Position = new Vector3(0f, 0f, 0f);
+                    verts[1].Position = new Vector3(0f, 0f, 20f);
+                    mesh.Draw.VertexBuffers[0].Buffer.SetData(Game.GraphicsContext.CommandList, verts);
+                    this.SpawnModel(entity, modelChildEntity.Transform.WorldMatrix);
+                }
+                else if (markerActivated && !down)
+                {
+
+                }
+
+                markerActivated = down;
+            };
         }
 
         /// <summary>
@@ -188,7 +245,6 @@ namespace Zerobot.Player
             Vector3 delta = moveDestination - destination;
             if (delta.Length() > 0.01f) // Only recalculate path when the target position is different
             {
-                // Generate a new path using the navigation component
                 pathToDestination.Clear();
                 if (navigation.TryFindPath(destination, pathToDestination))
                 {
@@ -199,7 +255,6 @@ namespace Zerobot.Player
                         waypointIndex++;
                     }
 
-                    // If this path still contains more points, set the player to running
                     if (!ReachedDestination)
                     {
                         isRunning = true;
@@ -225,7 +280,6 @@ namespace Zerobot.Player
                 var length = direction.Length();
                 direction /= length;
 
-                // Check when to advance to the next waypoint
                 bool advance = false;
 
                 // Check to see if an intermediate point was passed by projecting the position along the path
@@ -242,19 +296,17 @@ namespace Zerobot.Player
                 }
                 else
                 {
-                    if (length < DestinationThreshold) // Check distance to final point
+                    if (length < DestinationThreshold)
                     {
                         advance = true;
                     }
                 }
 
-                // Advance waypoint?
                 if (advance)
                 {
                     waypointIndex++;
                     if (ReachedDestination)
                     {
-                        // Final waypoint reached
                         HaltMovement();
                         return;
                     }
@@ -285,7 +337,6 @@ namespace Zerobot.Player
             }
             else
             {
-                // No target
                 HaltMovement();
             }
         }
@@ -295,7 +346,6 @@ namespace Zerobot.Player
             if (attackCooldown > 0)
                 return;
 
-            // Character speed
             ClickResult clickResult;
             if (moveDestinationEvent.TryReceive(out clickResult) && clickResult.Type != ClickType.Empty)
             {
@@ -321,7 +371,10 @@ namespace Zerobot.Player
             UpdateMoveTowardsDestination(speed);
         }
 
-        // move triggered by the remote controller
+        /// <summary>
+        /// move action triggered by the remote controller
+        /// </summary>
+        /// <param name="direction"> the move direction </param>
         private void RemoteMove(Vector3 direction)
         {
             if (attackCooldown > 0)
@@ -340,15 +393,29 @@ namespace Zerobot.Player
         }
 
         /// <summary>
+        /// Plays a beep sound
+        /// </summary>
+        private void PlayBeep()
+        {
+            beepSoundInstance.Play();
+        }
+
+        /// <summary>
+        /// Turns the signal on or off
+        /// </summary>
+        private void SignalOn(bool isOn)
+        {
+
+        }
+
+        /// <summary>
         /// If the marker is activated (down == true) then the character will leave a marked trail.
         /// </summary>
         private void Marker()
         {
             if (markerActivated && MarkerEffect != null)
             {
-                //this.SpawnPrefabInstance(MarkerEffect, null, 20f, modelChildEntity.Transform.WorldMatrix);
-
-
+                //this.SpawnPrefabModel(MarkerEffect, null, modelChildEntity.Transform.WorldMatrix, Vector3.Zero);
             }
         }
 
