@@ -3307,8 +3307,9 @@ Hierarchy:
                         PunchCollision: ref!! f55cf113-4fc6-42b5-9ce1-a586368259bd
                         AttackDistance: 1.25
                         AttackCooldown: 0.65
-                        MarkerEffect: 0cd247ff-be89-454a-893c-550e25080970:LootGoldCoin
                         BeepEffect: 3e024c71-300d-4da2-b02e-6ca28f1640bf:Audio/scream
+                        SignalEffect: feaae6d5-6de3-42c3-b703-70889f433e48:VFXPrefabs/Signal Effect
+                        MarkerEffect: 0cd247ff-be89-454a-893c-550e25080970:LootGoldCoin
                     809bf66aef692646891c293be4ca17b2: !Zerobot.Player.PlayerInput,Zerobot.Game
                         Id: 6af69b80-69ef-4626-891c-293be4ca17b2
                         ControllerIndex: 0

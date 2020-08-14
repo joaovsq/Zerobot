@@ -186,8 +186,9 @@ Hierarchy:
                         PunchCollision: ref!! fe1e1273-322f-4e93-9e58-116364ce45ee
                         AttackDistance: 1.25
                         AttackCooldown: 0.65
-                        MarkerEffect: null
                         BeepEffect: null
+                        SignalEffect: null
+                        MarkerEffect: null
                     809bf66aef692646891c293be4ca17b2: !Zerobot.Player.PlayerInput,Zerobot.Game
                         Id: 7c35c8ec-56df-4adf-b58f-49a9ed2533b5
                         ControllerIndex: 0

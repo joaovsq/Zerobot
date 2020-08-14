@@ -94,7 +94,7 @@ namespace Zerobot.Gameplay
             {
                 var offsetVector = new Vector3((float)rand.NextDouble() - 0.5f, (float)rand.NextDouble(), (float)rand.NextDouble() - 0.5f);
                 effectMatrix = Matrix.Scaling(0.7f + (float)rand.NextDouble() * 0.3f) * Matrix.Translation(Entity.Transform.WorldMatrix.TranslationVector + offsetVector * 2f);
-                this.SpawnPrefabModel(CoinSpawnModel, null, effectMatrix, offsetVector * (3f + (float)rand.NextDouble() * 3f));
+                this.SpawnPrefab(CoinSpawnModel, null, effectMatrix, offsetVector * (3f + (float)rand.NextDouble() * 3f));
             }
         }
     }

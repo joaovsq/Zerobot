@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Stride.Core.Collections;
 using Stride.Core.Mathematics;
@@ -22,10 +24,10 @@ namespace Zerobot.Core
             script.SceneSystem.SceneInstance.RootScene.Entities.Add(source);
         }
 
-        public static void SpawnPrefabModel(this ScriptComponent script, Prefab source, Entity attachEntity, Matrix localMatrix, Vector3 forceImpulse)
+        public static List<Entity> SpawnPrefab(this ScriptComponent script, Prefab source, Entity attachEntity, Matrix localMatrix, Vector3 forceImpulse)
         {
             if (source == null)
-                return;
+                return null;
 
             var spawnedEntities = source.Instantiate();
 
@@ -50,6 +52,8 @@ namespace Zerobot.Core
                     physComp.ApplyImpulse(forceImpulse);
                 }
             }
+
+            return spawnedEntities;
         }
 
         public static void SpawnPrefabInstance(this ScriptComponent script, Prefab source, Entity attachEntity, float timeout, Matrix localMatrix)
@@ -104,6 +108,17 @@ namespace Zerobot.Core
             };
 
             script.Script.AddTask(spawnTask);
+        }
+
+        /// <summary>
+        /// Removes a prefab from the scene
+        /// </summary>
+        public static void RemovePrefab(this IGame game, Prefab prefab)
+        {
+            foreach (var entity in prefab.Entities)
+            {
+                game.RemoveEntity(entity);
+            }
         }
 
         /// <summary>

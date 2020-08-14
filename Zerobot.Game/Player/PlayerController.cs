@@ -65,10 +65,12 @@ namespace Zerobot.Player
         // The PlayerController will propagate if it is attacking to the AnimationController
         public static readonly EventKey<bool> IsAttackingEventKey = new EventKey<bool>();
 
-        public Prefab MarkerEffect { get; set; }
-
         [Display("Beep Sound")]
         public Sound BeepEffect { get; set; }
+
+        public Prefab SignalEffect { get; set; }
+
+        public Prefab MarkerEffect { get; set; }
 
         /// <summary>
         /// the main remote command Queue.
@@ -79,8 +81,10 @@ namespace Zerobot.Player
         private static readonly CommandInterpreter commandInterpreter = new CommandInterpreter();
 
         private SoundInstance beepSoundInstance;
+        private bool signalOn = false;
+        private Entity signalInstance;
 
-        private bool markerActivated = false;
+        private bool markerOn = false;
         private static readonly List<Entity> markerTrailEntities = new List<Entity>();
         private Entity markerActiveTrail;
 
@@ -130,12 +134,12 @@ namespace Zerobot.Player
             commandInterpreter.moveHandler = RemoteMove;
             commandInterpreter.haltHandler = HaltMovement;
             commandInterpreter.beepHandler = PlayBeep;
-            commandInterpreter.signalHandler = SignalOn;
+            commandInterpreter.signalHandler = Signal;
 
             commandInterpreter.markerHandler = (bool down) =>
             {
                 // if this is a switch from deactivated to activated.
-                if (!markerActivated && down)
+                if (!markerOn && down)
                 {
                     var entity = new Entity();
                     var model = new Model();
@@ -171,12 +175,12 @@ namespace Zerobot.Player
                     mesh.Draw.VertexBuffers[0].Buffer.SetData(Game.GraphicsContext.CommandList, verts);
                     this.SpawnModel(entity, modelChildEntity.Transform.WorldMatrix);
                 }
-                else if (markerActivated && !down)
+                else if (markerOn && !down)
                 {
 
                 }
 
-                markerActivated = down;
+                markerOn = down;
             };
         }
 
@@ -401,11 +405,24 @@ namespace Zerobot.Player
         }
 
         /// <summary>
-        /// Turns the signal on or off
+        /// Turns the signal on or off. If the signal is already ON we don't do anything.
         /// </summary>
-        private void SignalOn(bool isOn)
+        private void Signal(bool turnOn)
         {
-
+            if (turnOn && !signalOn)
+            {
+                var instances = this.SpawnPrefab(SignalEffect, modelChildEntity, modelChildEntity.Transform.LocalMatrix, Vector3.Zero);
+                if (instances != null && instances.Count > 0)
+                {
+                    signalInstance = instances[0];
+                }
+                signalOn = true;
+            }
+            else if (!turnOn && signalOn)
+            {
+                Game.RemoveEntity(signalInstance);
+                signalOn = false;
+            }
         }
 
         /// <summary>
@@ -413,7 +430,7 @@ namespace Zerobot.Player
         /// </summary>
         private void Marker()
         {
-            if (markerActivated && MarkerEffect != null)
+            if (markerOn && MarkerEffect != null)
             {
                 //this.SpawnPrefabModel(MarkerEffect, null, modelChildEntity.Transform.WorldMatrix, Vector3.Zero);
             }

@@ -51,12 +51,20 @@ namespace Zerobot.Player
 
                     case CommandToken.Signal:
                         bool isOn = expression.Operands[0].Equals("on");
-                        signalHandler(isOn);
+                        bool isOff = expression.Operands[0].Equals("off");
+                        bool turnOn = isOn && isOff == false;
+                        if (!isOn && !isOff) break;
+
+                        signalHandler(turnOn);
                         break;
 
                     case CommandToken.Marker:
                         bool isDown = expression.Operands[0].Equals("down");
-                        markerHandler(isDown);
+                        bool isUp = expression.Operands[0].Equals("up");
+                        bool goDown = isDown && isUp == false;
+                        if (!isDown && !isUp) break;
+
+                        markerHandler(goDown);
                         break;
 
                     default:
