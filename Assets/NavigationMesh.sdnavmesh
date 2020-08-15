@@ -2,7 +2,7 @@
 Id: 022b2e18-945a-427c-8aaf-24da84ccf852
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
-Scene: b18bcab5-6642-4c14-8763-952695b552b2:MainScene
+Scene: b18bcab5-6642-4c14-8763-952695b552b2:Scenes/MainScene
 IncludedCollisionGroups: CustomFilter1
 BuildSettings:
     CellHeight: 0.1

@@ -15,7 +15,8 @@ namespace Zerobot.CommandCenter
         Stop,
         Beep,
         Signal,
-        Marker
+        Marker,
+        End
     }
 
     /// <summary>
@@ -72,6 +73,7 @@ namespace Zerobot.CommandCenter
 
             if (Token != CommandToken.Stop &&
                 Token != CommandToken.Beep &&
+                Token != CommandToken.End &&
                 words.Length < 2)
             {
                 throw new ArgumentException("Invalid Token Expression.");

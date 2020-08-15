@@ -21,6 +21,9 @@ namespace Zerobot.Player
         public Signal signalHandler;
         public Marker markerHandler;
 
+        /// <summary>
+        /// Enqueue a list of commands and execute them when a token End is received
+        /// </summary>
         public void Execute(string rawCommand)
         {
             try
