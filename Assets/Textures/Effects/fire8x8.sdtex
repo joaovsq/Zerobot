@@ -1,7 +1,7 @@
 !Texture
-Id: 28130626-6ab6-411f-958e-e7ea6e4a1380
+Id: b413ad7f-146c-4d7c-a937-4b158343dc05
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
-Source: !file ../Resources/Textures/Zerobot/zerobot2.png
+Source: !file ../../../Resources/Textures/Flame/fire8x8.png
 Type: !ColorTextureType
     ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}

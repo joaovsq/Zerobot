@@ -145,7 +145,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/SparkLight01_0001
+                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/Effects/SparkLight01_0001
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}
@@ -353,7 +353,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/SparkLight01_0001
+                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/Effects/SparkLight01_0001
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}
@@ -711,7 +711,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/SparkLight01_0001
+                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/Effects/SparkLight01_0001
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}
@@ -780,7 +780,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/SparkLight01_0001
+                                                    Texture: f566996d-f5b5-4855-a2f8-ca43fd17abae:Textures/Effects/SparkLight01_0001
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}

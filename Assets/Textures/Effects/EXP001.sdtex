@@ -1,7 +1,8 @@
 !Texture
-Id: d4634c8b-8860-4a11-85d9-32fbe94fd603
+Id: 8e96bdbb-b52f-4793-9a4c-02f97bc538a9
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
-Source: !file ../../Resources/Textures/Flame/FIR001.png
+Source: !file ../../../Resources/Textures/Explosion/EXP001.png
 Type: !ColorTextureType
     ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+IsStreamable: false

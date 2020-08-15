@@ -65,7 +65,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: 8e96bdbb-b52f-4793-9a4c-02f97bc538a9:Textures/EXP001
+                                                    Texture: 8e96bdbb-b52f-4793-9a4c-02f97bc538a9:Textures/Effects/EXP001
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}
@@ -200,7 +200,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: c08cb47b-9bfb-4a68-8d19-e72062b2c02d:Textures/SMO001
+                                                    Texture: c08cb47b-9bfb-4a68-8d19-e72062b2c02d:Textures/Effects/SMO001
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}
@@ -332,7 +332,7 @@ Hierarchy:
                                             RightChild: !ComputeBinaryColor
                                                 Operator: Multiply
                                                 LeftChild: !ComputeTextureColor
-                                                    Texture: fd66606c-eab1-4928-afff-8ee959ac26a2:Textures/SMO001_3
+                                                    Texture: fd66606c-eab1-4928-afff-8ee959ac26a2:Textures/Effects/SMO001_3
                                                     FallbackValue:
                                                         Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                     Scale: {X: 1.0, Y: 1.0}

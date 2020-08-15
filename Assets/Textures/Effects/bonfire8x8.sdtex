@@ -1,8 +1,7 @@
 !Texture
-Id: 8e96bdbb-b52f-4793-9a4c-02f97bc538a9
+Id: 15fc073f-ca9a-4789-9e90-cf14f4ad8405
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
-Source: !file ../../Resources/Textures/Explosion/EXP001.png
+Source: !file ../../../Resources/Textures/Flame/bonfire8x8.png
 Type: !ColorTextureType
     ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
-IsStreamable: false

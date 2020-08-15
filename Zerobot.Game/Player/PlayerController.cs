@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Stride.Audio;
 using Stride.Core;
@@ -132,6 +133,7 @@ namespace Zerobot.Player
             beepSoundInstance.Stop();
 
             commandInterpreter.moveHandler = RemoteMove;
+            commandInterpreter.canMoveHandler = RemoteCanMove;
             commandInterpreter.haltHandler = HaltMovement;
             commandInterpreter.beepHandler = PlayBeep;
             commandInterpreter.signalHandler = Signal;
@@ -192,6 +194,8 @@ namespace Zerobot.Player
             Attack();
             Marker();
 
+            commandInterpreter.NextPendantAction();
+
             if (!RemoteCommandQueue.IsNullOrEmpty())
             {
                 string nextCommand = RemoteCommandQueue.Dequeue();
@@ -200,6 +204,7 @@ namespace Zerobot.Player
 
             Move(MaxRunSpeed);
         }
+
 
         /// <summary>
         /// Executes the player attack
@@ -394,6 +399,15 @@ namespace Zerobot.Player
             }
 
             UpdateMoveTowardsDestination(MaxRunSpeed);
+        }
+
+        /// <summary>
+        /// If the remoted controlled player can move or not
+        /// </summary>
+        private bool RemoteCanMove()
+        {
+            return CurrentWaypoint == Vector3.Zero ?
+                true : modelChildEntity.Transform.WorldMatrix.TranslationVector == CurrentWaypoint;
         }
 
         /// <summary>

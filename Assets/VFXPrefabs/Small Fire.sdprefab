@@ -1,35 +1,35 @@
 !PrefabAsset
-Id: feaae6d5-6de3-42c3-b703-70889f433e48
+Id: 23a80f35-aeb2-4e70-81b0-0f5f13112af4
 SerializedVersion: {Stride: 3.1.0.1}
 Tags: []
 Hierarchy:
     RootParts:
-        - ref!! 364895e7-8eb8-4534-8aeb-260b82d99bcf
+        - ref!! 3cf3e9e1-ce59-43ed-aaa2-53a87524f9d9
     Parts:
         -   Entity:
-                Id: 364895e7-8eb8-4534-8aeb-260b82d99bcf
+                Id: 3cf3e9e1-ce59-43ed-aaa2-53a87524f9d9
                 Name: The FIRE
                 Components:
                     fa8f95b220b7df4e8f0019f95a5d1eef: !TransformComponent
-                        Id: 7e3e20ff-e3e8-4132-8c0e-cc68111160f9
+                        Id: a0ab3c86-788d-4615-9082-fe11373a7df7
                         Position: {X: 0.0, Y: 0.0, Z: 0.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 2.0, Y: 1.0, Z: 1.0}
+                        Scale: {X: 0.5, Y: 1.0, Z: 0.05}
                         Children: {}
                     39b07e196ff99a4d957dbebeb153ad2c: !ParticleSystemComponent
-                        Id: 739e8fca-9d06-4ea8-8ce3-5f7d05cbebc0
+                        Id: 14b05be9-b8a8-49a5-8542-fb550e3adde8
                         Control:
                             ResetSeconds: 3.0
                             Control: Play
-                        Color: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+                        Color: {R: 0.91, G: 0.89635, B: 0.89635, A: 1.0}
                         Speed: 1.0
                         ParticleSystem:
                             Settings: {}
-                            BoundingShape: !BoundingSpheretatic
-                                Radius: 3.0
+                            BoundingShape: null
                             Emitters:
                                 eb5ed7aa88fb514bba1d3d103de25130:
                                     EmitterName: fire
+                                    MaxParticlesOverride: 20
                                     ParticleLifetime: {X: 1.0, Y: 1.0}
                                     DrawPriority: 5
                                     ShapeBuilder: !ShapeBuilderBillboard
@@ -41,9 +41,9 @@ Hierarchy:
                                         ComputeColor: !ComputeBinaryColor
                                             Operator: Multiply
                                             LeftChild: !ComputeFloat4
-                                                Value: {X: 50.0, Y: 50.0, Z: 50.0, W: 1.0}
+                                                Value: {X: 4.0, Y: 4.0, Z: 4.0, W: 1.0}
                                             RightChild: !ComputeTextureColor
-                                                Texture: d4634c8b-8860-4a11-85d9-32fbe94fd603:Textures/Effects/FIR001
+                                                Texture: 15fc073f-ca9a-4789-9e90-cf14f4ad8405:Textures/Effects/bonfire8x8
                                                 FallbackValue:
                                                     Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                 Scale: {X: 1.0, Y: 1.0}
@@ -77,7 +77,7 @@ Hierarchy:
                                             DisplayParticleScale: false
                                             DisplayParticleScaleUniform: true
                                             RandomSize: {X: 1.0, Y: 2.0}
-                                        9954f868fd1b684bace8a8bcb5b40077: !InitialPositionSeed
+                                        9954f868fd1b684bace8a8bcb5b40077: !InitialPositionArc
                                             InheritPosition: true
                                             Position: {X: 0.0, Y: 0.0, Z: 0.0}
                                             InheritRotation: true
@@ -85,14 +85,18 @@ Hierarchy:
                                             InheritScale: true
                                             Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                                             ScaleUniform: 1.0
-                                            SeedOffset: 0
                                             DisplayParticlePosition: false
+                                            Target: null
                                             DisplayParticleRotation: true
+                                            FallbackTarget: {X: 0.0, Y: 0.0, Z: -1.0}
                                             DisplayParticleScale: false
-                                            DisplayParticleScaleUniform: true
-                                            PositionMin: {X: -0.2, Y: 0.0, Z: -0.2}
-                                            PositionMax: {X: 0.2, Y: 0.0, Z: 0.2}
-                                            Interpolate: false
+                                            DisplayParticleScaleUniform: false
+                                            ArcHeight: 1.0
+                                            Sequential: true
+                                            FixedLength: 0
+                                            PositionMin: {X: -0.3, Y: -0.3, Z: -0.3}
+                                            PositionMax: {X: 0.3, Y: 0.3, Z: 0.3}
+                                            SeedOffset: 0
                                         2d3a6f731037fb4fabce65b7a4d9e699: !InitialVelocitySeed
                                             InheritPosition: true
                                             Position: {X: 0.0, Y: 0.0, Z: 0.0}
@@ -109,6 +113,7 @@ Hierarchy:
                                             VelocityMin: {X: -0.5, Y: -0.2, Z: -0.5}
                                             VelocityMax: {X: 0.5, Y: 0.5, Z: 0.5}
                                         e72f33e3e3dbc34a97a52bb1518ad1d7: !InitialRotationSeed
+                                            Enabled: false
                                             InheritPosition: true
                                             Position: {X: 0.0, Y: 0.0, Z: 0.0}
                                             InheritRotation: true
@@ -152,3 +157,26 @@ Hierarchy:
                                                             TangentType: Linear
                                             SamplerOptional: null
                                             SeedOffset: 0
+                                78c0bf70b47df707cd102d16af8caf30:
+                                    ParticleLifetime: {X: 1.0, Y: 1.0}
+                                    ShapeBuilder: !ShapeBuilderQuad
+                                        SamplerPosition: null
+                                        SamplerSize: null
+                                        SamplerRotation: null
+                                    Material: !ParticleMaterialComputeColor
+                                        ComputeColor: !ComputeBinaryColor
+                                            Operator: Multiply
+                                            LeftChild: !ComputeVertexStreamColor
+                                                Stream: !ColorVertexStreamDefinition {}
+                                            RightChild: !ComputeTextureColor
+                                                Texture: a0b9eed2-f962-4d8f-b0a9-324a4e39d994:Textures/Ring01
+                                                FallbackValue:
+                                                    Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+                                                Scale: {X: 1.0, Y: 1.0}
+                                                Offset: {X: 0.0, Y: 0.0}
+                                                Swizzle: null
+                                        UVBuilder: null
+                                        ForceTexCoords: false
+                                    Spawners: {}
+                                    Initializers: {}
+                                    Updaters: {}

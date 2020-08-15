@@ -1,8 +1,7 @@
 !Texture
-Id: fd66606c-eab1-4928-afff-8ee959ac26a2
+Id: 6c10a6c8-9b34-45f1-aa55-b055840f91c9
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
-Source: !file ../../Resources/Textures/Smoke03/SMO001.png
+Source: !file ../../../Resources/Textures/Bonfire/FRB001.dds
 Type: !ColorTextureType
     ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
-IsStreamable: false
