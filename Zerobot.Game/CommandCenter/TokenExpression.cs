@@ -57,7 +57,7 @@ namespace Zerobot.CommandCenter
 
                 try
                 {
-                    Token = ParseEnumName<CommandToken>(word);
+                    Token = ParseEnumNameInsensitive<CommandToken>(word);
                     tokenFound = true;
                 }
                 catch (ArgumentException)
@@ -115,6 +115,30 @@ namespace Zerobot.CommandCenter
             foreach (T enumValue in Enum.GetValues(typeof(T)))
             {
                 if (enumValue.ToString().Equals(value))
+                {
+                    return enumValue;
+                }
+            }
+
+            throw new ArgumentException();
+        }
+
+        /// <summary>
+        /// Checks if the given string is equals to a value name inside the given Enum type. For example:
+        /// 
+        /// This method uses case insensitive, so we ignore CAPS letters.
+        /// 
+        /// enum value: Color.Red
+        /// value given: red (case insensitive)
+        /// 
+        /// In this case this method would return Color.Red
+        /// </summary>
+        /// <returns> The enum object </returns>
+        public static T ParseEnumNameInsensitive<T>(string value) where T : Enum
+        {
+            foreach (T enumValue in Enum.GetValues(typeof(T)))
+            {
+                if (enumValue.ToString().ToLower().Equals(value.ToLower()))
                 {
                     return enumValue;
                 }
