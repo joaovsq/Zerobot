@@ -12,22 +12,25 @@ Hierarchy:
                 Id: 4692db23-72fa-4f34-b846-08b83fd0652f
                 DependencyProperties: {}
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 119.0
-                Height: 32.0
+                Width: 263.0
+                Height: 67.53125
                 Margin: {}
                 Text: Press to Start
-                Font: 2091734c-ec02-49fe-bd05-bdd2c6b942b5:UI/UI Font
-                TextSize: 48.0
+                Font: 0c03e379-f48d-4f75-8be3-ce387e24f4bc:Textures/Fonts/JapanaseFont
+                TextSize: 42.0
                 TextColor: {R: 240, G: 240, B: 240, A: 255}
         -   UIElement: !UniformGrid
                 Id: 52d858ba-c82f-4a62-99d7-3b35eb319dc4
                 DependencyProperties: {}
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 627.0
-                Height: 653.0
-                Margin: {Left: 329.0, Top: 45.0, Right: 324.0, Bottom: 22.0}
+                Width: 1280.0
+                Height: 720.0
+                Margin: {}
+                MaximumWidth: 3.40282347E+38
+                MaximumHeight: 3.40282347E+38
+                MaximumDepth: 3.40282347E+38
                 Children:
-                    160a38a475bccd611892ea4562bbed40: !ImageElement ref!! 9f35576d-d4a7-47c5-8051-4ecf31f87c86
+                    440940a48f99644a88f160263762b1c5: !ImageElement ref!! f97d6785-99cd-40e0-abbf-d380eb196492
                     396d8f88a967777669ca6daa6f7a3a49: !Grid ref!! 9284341b-1fe0-4e82-a50a-1c07bbfd299c
         -   UIElement: !ContentDecorator
                 Id: 651798c0-52db-4732-ab6b-b8e033edffaf
@@ -37,79 +40,41 @@ Hierarchy:
                 Width: 315.0
                 Height: 77.0
                 VerticalAlignment: Top
-                Margin: {}
+                Margin: {Left: 320.808533, Top: 26.0, Right: 320.808533}
                 Name: Title
                 Padding: {}
                 Content: !TextBlock ref!! f1f955e7-9438-4510-8610-6987db282fe5
                 BackgroundImage: !SpriteFromSheet
                     Sheet: 8fd53fa0-1399-4ea5-a926-ed1bca0d99ab:UI/Splash/SplashScreen
                     CurrentFrame: 2
-        -   UIElement: !ContentDecorator
-                Id: 729580b6-10da-4a3d-90f8-fbcdeaf9a18f
-                DependencyProperties: {}
-                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                DrawLayerNumber: 3
-                Width: 75.0
-                Height: 58.0
-                VerticalAlignment: Top
-                Margin: {Left: 110.0, Top: 77.0, Right: 130.0}
-                Name: Version
-                Padding: {}
-                Content: !TextBlock ref!! 901653a7-fe05-4e47-a22b-abb9148d838f
-                BackgroundImage: !SpriteFromSheet
-                    Sheet: 8fd53fa0-1399-4ea5-a926-ed1bca0d99ab:UI/Splash/SplashScreen
-                    CurrentFrame: 3
-        -   UIElement: !ContentDecorator
-                Id: 7c6b325d-b363-4e34-a794-16062ddbac40
-                DependencyProperties: {}
-                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                DrawLayerNumber: 2
-                Width: 260.0
-                Height: 176.0
-                Margin: {Left: 23.0, Top: 185.0, Right: 32.0, Bottom: 149.0}
-                Name: Logo
-                Padding: {}
-                BackgroundImage: !SpriteFromSheet
-                    Sheet: 8fd53fa0-1399-4ea5-a926-ed1bca0d99ab:UI/Splash/SplashScreen
-                    CurrentFrame: 1
         -   UIElement: !TextBlock
                 Id: 901653a7-fe05-4e47-a22b-abb9148d838f
                 DependencyProperties: {}
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 67.5
+                Width: 54.5
                 Height: 37.0
-                Margin: {}
+                HorizontalAlignment: Right
+                VerticalAlignment: Bottom
+                Margin: {Right: 193.058533, Bottom: 195.2872}
+                Name: Version
                 Text: v0.1
-                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
+                Font: 0c03e379-f48d-4f75-8be3-ce387e24f4bc:Textures/Fonts/JapanaseFont
                 TextSize: 28.0
                 TextColor: {R: 240, G: 240, B: 240, A: 255}
         -   UIElement: !Grid
                 Id: 9284341b-1fe0-4e82-a50a-1c07bbfd299c
                 DependencyProperties: {}
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 315.0
-                Height: 510.0
-                Margin: {Left: 467.0, Top: 96.0, Right: 498.0, Bottom: 114.0}
+                Width: 956.617065
+                Height: 503.5744
+                Margin: {Left: 158.463013, Top: 128.4256, Right: 164.919922, Bottom: 88.0}
                 Children:
                     9e65348f99d63e924607ca2b446855ed: !ContentDecorator ref!! 651798c0-52db-4732-ab6b-b8e033edffaf
-                    50861934a6786c33e70dac5e8b374525: !ContentDecorator ref!! 729580b6-10da-4a3d-90f8-fbcdeaf9a18f
-                    bf0981000a0f9abd65cfafd5bfbadf6b: !ContentDecorator ref!! 7c6b325d-b363-4e34-a794-16062ddbac40
                     6f03fd63654db1ab0eb25f53db780e97: !ContentDecorator ref!! ea03cae8-fb29-4b79-b9fc-e2f5ce0a4b6d
+                    32759b273daa6a7fe6e584c641e82c70: !TextBlock ref!! 901653a7-fe05-4e47-a22b-abb9148d838f
                 RowDefinitions: {}
                 ColumnDefinitions: {}
                 LayerDefinitions: {}
-        -   UIElement: !ImageElement
-                Id: 9f35576d-d4a7-47c5-8051-4ecf31f87c86
-                DependencyProperties:
-                    f1d9374af1c18c91b89341285b7afe56~Panel.ZIndexPropertyKey: -1
-                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 360.0
-                Height: 720.0
-                Margin: {Left: 445.0, Right: 475.0}
-                Name: Background
-                Source: !SpriteFromSheet
-                    Sheet: 8fd53fa0-1399-4ea5-a926-ed1bca0d99ab:UI/Splash/SplashScreen
-                Color: {R: 255, G: 255, B: 255, A: 255}
         -   UIElement: !ContentDecorator
                 Id: ea03cae8-fb29-4b79-b9fc-e2f5ce0a4b6d
                 DependencyProperties:
@@ -119,7 +84,7 @@ Hierarchy:
                 Width: 315.0
                 Height: 67.0
                 VerticalAlignment: Bottom
-                Margin: {Bottom: -24.0}
+                Margin: {Left: 320.808533, Right: 320.808533, Bottom: 49.0}
                 Name: Touch to start
                 Padding: {}
                 Content: !TextBlock ref!! 4692db23-72fa-4f34-b846-08b83fd0652f
@@ -130,10 +95,29 @@ Hierarchy:
                 Id: f1f955e7-9438-4510-8610-6987db282fe5
                 DependencyProperties: {}
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 279.0
-                Height: 43.0
+                Width: 235.0
+                Height: 76.9999161
                 Margin: {}
-                Text: Zerobot Simulator
-                Font: c90f3988-0544-4cbe-993f-13af7d9c23c6:StrideDefaultFont
-                TextSize: 28.0
+                MaximumWidth: 3.40282347E+38
+                MaximumHeight: 3.40282347E+38
+                MaximumDepth: 3.40282347E+38
+                Text: 'Welcome to '
+                Font: 0c03e379-f48d-4f75-8be3-ce387e24f4bc:Textures/Fonts/JapanaseFont
+                TextSize: 42.0
                 TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !ImageElement
+                Id: f97d6785-99cd-40e0-abbf-d380eb196492
+                DependencyProperties:
+                    d9b9f5963f2e30b9994a3e08f7ea7af6~Panel.ZIndexPropertyKey: -1
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Width: 956.6171
+                Height: 503.574432
+                Margin: {Left: 158.463013, Top: 128.4256, Right: 164.919922, Bottom: 88.0}
+                MaximumWidth: 3.40282347E+38
+                MaximumHeight: 3.40282347E+38
+                MaximumDepth: 3.40282347E+38
+                Name: Background
+                Source: !SpriteFromSheet
+                    Sheet: 8fd53fa0-1399-4ea5-a926-ed1bca0d99ab:UI/Splash/SplashScreen
+                    CurrentFrame: 1
+                Color: {R: 255, G: 255, B: 255, A: 255}
