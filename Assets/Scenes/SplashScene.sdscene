@@ -21,9 +21,12 @@ Hierarchy:
                         Children: {}
                     6fc96f460bcb4c183770833443a77095: !UIComponent
                         Id: 71aa931e-68e5-4b7a-9ee1-c86e51c95515
-                        Page: 693fc0f4-034c-4f6c-8849-beea0a2403a3:UI/SplashUIPage
+                        Page: 693fc0f4-034c-4f6c-8849-beea0a2403a3:UI/Splash/SplashUIPage
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.28, Y: 0.72, Z: 1.0}
+                    3d95a17d4dd9c5917b7b32621437f008: !Zerobot.UI.SplashScript,Zerobot.Game
+                        Id: 3ac468c6-e9ce-4fd6-81f7-39a8bbd2d182
+                        NextSceneUrl: b18bcab5-6642-4c14-8763-952695b552b2:Scenes/MainScene
         -   Entity:
                 Id: bfe19f83-f468-49a6-be86-8cb7c9e93ff6
                 Name: Camera

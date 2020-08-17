@@ -3,39 +3,39 @@ Id: 8fd53fa0-1399-4ea5-a926-ed1bca0d99ab
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
 Type: UI
-ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+ColorKeyColor: {R: 23, G: 67, B: 80, A: 255}
 Packing: {}
 Sprites:
     1229bf70090d3d25a540246c5aa71033:
-        Source: !file ../../Resources/Textures/UI/background.jpg
+        Source: !file ../../../Resources/Textures/UI/background.jpg
         Name: background
-        TextureRegion: {X: 0, Y: 0, Width: 1024, Height: 2048}
+        TextureRegion: {X: 0, Y: 0, Width: 640, Height: 1136}
         Center: {X: 0.0, Y: 0.0}
         Borders: {X: 0.0, Y: 0.0, Z: 0.0, W: 0.0}
         BorderColor: {R: 0, G: 0, B: 0, A: 0}
     fc6400e963419a87460fd65496d9bc8a:
-        Source: !file ../../Resources/Textures/Zerobot/zerobot.PNG
+        Source: !file ../../../Resources/Textures/Zerobot/zerobot.PNG
         Name: logo
         TextureRegion: {X: 0, Y: 0, Width: 1647, Height: 867}
         Center: {X: 0.0, Y: 0.0}
         Borders: {X: 0.0, Y: 0.0, Z: 0.0, W: 0.0}
         BorderColor: {R: 0, G: 0, B: 0, A: 0}
     edffb9bb26901cba9644509a74131d52:
-        Source: !file ../../Resources/Textures/UI/ui_tex.png
+        Source: !file ../../../Resources/Textures/UI/ui_tex.png
         Name: ui_tex_bg
         TextureRegion: {X: 648, Y: 838, Width: 590, Height: 130}
         Center: {X: 0.0, Y: 0.0}
         Borders: {X: 0.0, Y: 0.0, Z: 0.0, W: 0.0}
         BorderColor: {R: 0, G: 0, B: 0, A: 0}
     69ebb3ebb314338f07fa81cbd10c9683:
-        Source: !file ../../Resources/Textures/UI/ui_tex.png
+        Source: !file ../../../Resources/Textures/UI/ui_tex.png
         Name: ui_tex_small_button
         TextureRegion: {X: 1153, Y: 425, Width: 127, Height: 123}
         Center: {X: 0.0, Y: 0.0}
         Borders: {X: 0.0, Y: 0.0, Z: 0.0, W: 0.0}
         BorderColor: {R: 0, G: 0, B: 0, A: 0}
     57245466ff5f49e79e8d36a1c67eebd8:
-        Source: !file ../../Resources/Textures/UI/ui_tex.png
+        Source: !file ../../../Resources/Textures/UI/ui_tex.png
         Name: ui_tex_button
         TextureRegion: {X: 1246, Y: 907, Width: 446, Height: 91}
         Center: {X: 0.0, Y: 0.0}
