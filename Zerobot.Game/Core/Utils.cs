@@ -6,22 +6,56 @@ using Stride.Core.Collections;
 using Stride.Core.Mathematics;
 using Stride.Engine;
 using Stride.Games;
+using Stride.Graphics;
 using Stride.Physics;
+using Stride.Rendering;
 
 namespace Zerobot.Core
 {
     public static class Utils
     {
 
-        public static void SpawnModel(this ScriptComponent script, Entity source, Matrix localMatrix)
+        public static Mesh GenerateLineMesh(this ScriptComponent script, Vector3 positionA, Vector3 positionB)
+        {
+            var pointA = new Vector3(positionA.X, 0f, positionA.Z);
+            var pointB = new Vector3(positionB.X, 0f, positionB.Z);
+
+            var vertices = new VertexPositionTexture[3];
+            vertices[0].Position = pointA;
+            vertices[1].Position = pointB;
+            var vertexBuffer = Stride.Graphics.Buffer.Vertex.New(script.GraphicsDevice, vertices,
+                                                                 GraphicsResourceUsage.Dynamic);
+            int[] indices = { 0, 1 };
+            var indexBuffer = Stride.Graphics.Buffer.Index.New(script.GraphicsDevice, indices);
+            var mesh = new Mesh
+            {
+                //Draw = GeometricPrimitive.Cylinder.New(GraphicsDevice).ToMeshDraw()
+                Draw = new MeshDraw
+                {
+                    PrimitiveType = PrimitiveType.LineList,
+                    DrawCount = indices.Length,
+                    IndexBuffer = new IndexBufferBinding(indexBuffer, true, indices.Length),
+                    VertexBuffers = new[] { new VertexBufferBinding(vertexBuffer,
+                                  VertexPositionTexture.Layout, vertexBuffer.ElementCount) },
+                }
+            };
+
+            return mesh;
+        }
+
+        public static Entity SpawnModel(this ScriptComponent script, Entity source, Matrix localMatrix)
         {
             if (source == null)
-                return;
+                return null;
+
+            var sourceClone = source.Clone();
 
             var entityMatrix = source.Transform.LocalMatrix * localMatrix;
-            entityMatrix.Decompose(out source.Transform.Scale, out source.Transform.Rotation, out source.Transform.Position);
+            entityMatrix.Decompose(out sourceClone.Transform.Scale, out sourceClone.Transform.Rotation, out sourceClone.Transform.Position);
 
-            script.SceneSystem.SceneInstance.RootScene.Entities.Add(source);
+            script.SceneSystem.SceneInstance.RootScene.Entities.Add(sourceClone);
+
+            return sourceClone;
         }
 
         public static List<Entity> SpawnPrefab(this ScriptComponent script, Prefab source, Entity attachEntity, Matrix localMatrix, Vector3 forceImpulse)

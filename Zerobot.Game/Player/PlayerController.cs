@@ -1,18 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using Stride.Audio;
 using Stride.Core;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
-using Stride.Core.Shaders.Ast;
 using Stride.Engine;
 using Stride.Engine.Events;
-using Stride.Extensions;
 using Stride.Graphics;
-using Stride.Graphics.GeometricPrimitives;
 using Stride.Navigation;
 using Stride.Physics;
 using Stride.Rendering;
@@ -45,9 +39,6 @@ namespace Zerobot.Player
         /// </summary>
         public float DestinationSlowdown { get; set; } = 0.4f;
 
-        // The PlayerController will propagate its speed to the AnimationController
-        public static readonly EventKey<float> RunSpeedEventKey = new EventKey<float>();
-
         [Display("Punch Collision")]
         public RigidbodyComponent PunchCollision { get; set; }
 
@@ -65,6 +56,9 @@ namespace Zerobot.Player
 
         // The PlayerController will propagate if it is attacking to the AnimationController
         public static readonly EventKey<bool> IsAttackingEventKey = new EventKey<bool>();
+
+        // The PlayerController will propagate its speed to the AnimationController
+        public static readonly EventKey<float> RunSpeedEventKey = new EventKey<float>();
 
         [Display("Beep Sound")]
         public Sound BeepEffect { get; set; }
@@ -86,8 +80,8 @@ namespace Zerobot.Player
         private Entity signalInstance;
 
         private bool markerOn = false;
-        private static readonly List<Entity> markerTrailEntities = new List<Entity>();
-        private Entity markerActiveTrail;
+        private static readonly List<ZerobotMarker> markerTrails = new List<ZerobotMarker>();
+        private ZerobotMarker markerActiveTrail = new ZerobotMarker();
 
         // Allow some inertia to the movement
         private Vector3 moveDirection = Vector3.Zero;
@@ -97,6 +91,7 @@ namespace Zerobot.Player
         private CharacterComponent character;
         private Entity modelChildEntity;
         private float yawOrientation;
+        private float lastYawOrientation;
 
         private Entity attackEntity = null;
         private float attackCooldown = 0f;
@@ -138,52 +133,7 @@ namespace Zerobot.Player
             commandInterpreter.beepHandler = PlayBeep;
             commandInterpreter.signalHandler = Signal;
 
-            commandInterpreter.markerHandler = (bool down) =>
-            {
-                // if this is a switch from deactivated to activated.
-                if (!markerOn && down)
-                {
-                    var entity = new Entity();
-                    var model = new Model();
-                    entity.GetOrCreate<ModelComponent>().Model = model;
-
-                    var vertices = new VertexPositionTexture[3];
-                    vertices[0].Position = new Vector3(0f, 0f, 0f);
-                    vertices[1].Position = new Vector3(0f, 0f, 10f);
-                    var vertexBuffer = Stride.Graphics.Buffer.Vertex.New(GraphicsDevice, vertices,
-                                                                         GraphicsResourceUsage.Dynamic);
-                    int[] indices = { 0, 1 };
-                    var indexBuffer = Stride.Graphics.Buffer.Index.New(GraphicsDevice, indices);
-                    var mesh = new Mesh
-                    {
-                        //Draw = GeometricPrimitive.Cylinder.New(GraphicsDevice).ToMeshDraw()
-                        Draw = new MeshDraw
-                        {
-                            PrimitiveType = PrimitiveType.LineList,
-                            DrawCount = indices.Length,
-                            IndexBuffer = new IndexBufferBinding(indexBuffer, true, indices.Length),
-                            VertexBuffers = new[] { new VertexBufferBinding(vertexBuffer,
-                                  VertexPositionTexture.Layout, vertexBuffer.ElementCount) },
-                        }
-                    };
-
-                    model.Meshes.Add(mesh);
-                    Material material = Content.Load<Material>("Materials/BodyGray");
-                    model.Materials.Add(material);
-
-                    var verts = new VertexPositionTexture[3];
-                    verts[0].Position = new Vector3(0f, 0f, 0f);
-                    verts[1].Position = new Vector3(0f, 0f, 20f);
-                    mesh.Draw.VertexBuffers[0].Buffer.SetData(Game.GraphicsContext.CommandList, verts);
-                    this.SpawnModel(entity, modelChildEntity.Transform.WorldMatrix);
-                }
-                else if (markerOn && !down)
-                {
-
-                }
-
-                markerOn = down;
-            };
+            commandInterpreter.markerHandler = MarkerUpDown;
         }
 
         /// <summary>
@@ -192,19 +142,21 @@ namespace Zerobot.Player
         public override void Update()
         {
             Attack();
-            Marker();
 
             commandInterpreter.NextPendantAction();
-
             if (!RemoteCommandQueue.IsNullOrEmpty())
             {
                 string nextCommand = RemoteCommandQueue.Dequeue();
                 commandInterpreter.Execute(nextCommand);
             }
 
+            if (markerActiveTrail.Trail != null && isRunning)
+            {
+                UpdateMarker();
+            }
+
             Move(MaxRunSpeed);
         }
-
 
         /// <summary>
         /// Executes the player attack
@@ -440,14 +392,87 @@ namespace Zerobot.Player
         }
 
         /// <summary>
-        /// If the marker is activated (down == true) then the character will leave a marked trail.
+        /// Starts or stop the marker depending on the down parameter. 
+        /// if down is true = start
         /// </summary>
-        private void Marker()
+        private void MarkerUpDown(bool down)
         {
-            if (markerOn && MarkerEffect != null)
+
+            // if this is a switch from deactivated to activated.
+            if (!markerOn && down)
             {
-                //this.SpawnPrefabModel(MarkerEffect, null, modelChildEntity.Transform.WorldMatrix, Vector3.Zero);
+                List<Entity> startEffect = this.SpawnPrefab(MarkerEffect, null, Entity.Transform.WorldMatrix, Vector3.Zero);
+
+                var marker = new ZerobotMarker()
+                {
+                    StartEffectPrefabInstance = startEffect,
+                    Trail = new List<Entity>()
+                };
+
+                markerTrails.Add(marker);
+                markerActiveTrail = marker;
             }
+            else if (markerOn && !down)
+            {
+                List<Entity> endEffect = this.SpawnPrefab(MarkerEffect, null, Entity.Transform.WorldMatrix, Vector3.Zero);
+                markerActiveTrail.EndEffectPrefabInstance = endEffect;
+
+                // replace with a empty reference
+                markerActiveTrail = new ZerobotMarker();
+            }
+
+            markerOn = down;
+        }
+
+        /// <summary>
+        /// Updates the active Marker to leave a trail
+        /// </summary>
+        private void UpdateMarker()
+        {
+            // If the direction is the same (a straight line for example) we want to update the last existing mesh
+            // but, if the direction changes, we need a new entity
+
+            int trailSize = markerActiveTrail.Trail.Count;
+
+            Vector3 currentPos = Entity.Transform.WorldMatrix.TranslationVector;
+            float orientation = MathUtil.RadiansToDegrees((float)Math.Atan2(-moveDirection.Z, moveDirection.X) + MathUtil.PiOverTwo);
+
+            // TODO: optimize this, maybe we should use a orientation interval ? To spawn less entities
+            if (trailSize <= 0 || orientation != lastYawOrientation)
+            {
+                var entity = new Entity();
+                var model = new Model();
+                var material = Content.Load<Material>("Materials/BodyGray");
+                model.Materials.Add(material);
+                entity.GetOrCreate<ModelComponent>().Model = model;
+                entity = this.SpawnModel(entity, Entity.Transform.WorldMatrix);
+
+                var diff = new Vector3(0.1f, 0f, 0.1f);
+                //if (pathToDestination.Count > 0 && waypointIndex > 0)
+                //{
+                //    diff = currentPos - pathToDestination[waypointIndex - 1];
+                //}
+
+                var newMesh = this.GenerateLineMesh(diff, Vector3.Zero);
+                model.Meshes.Add(newMesh);
+
+                markerActiveTrail.Trail.Add(entity);
+            }
+            else if (trailSize > 0 && orientation == lastYawOrientation)
+            {
+                Entity lastEnt = markerActiveTrail.Trail[trailSize - 1];
+                Model model = lastEnt.GetOrCreate<ModelComponent>().Model;
+                Mesh mesh = model.Meshes[0];
+
+                Vector3 startDiff = currentPos - lastEnt.Transform.WorldMatrix.TranslationVector;
+
+                var verts = new VertexPositionTexture[3];
+                verts[0].Position = startDiff;
+                verts[1].Position = Vector3.Zero;
+                mesh.Draw.VertexBuffers[0].Buffer.SetData(Game.GraphicsContext.CommandList, verts);
+            }
+
+            lastYawOrientation = orientation;
         }
 
     }

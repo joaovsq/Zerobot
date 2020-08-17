@@ -521,7 +521,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: b34c0e15-131e-43a1-ac4a-2278013b1ff2
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: 8982c667-8372-43ce-b254-de0c898a63e5
                         CollisionGroup*: CustomFilter1
@@ -1109,7 +1110,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: b4d4e5e8-0403-4d3d-81df-1624fe7fd69e
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: 14ea8708-5376-4cb0-8661-5687dbd7f697
                         CollisionGroup*: CustomFilter1
@@ -1192,7 +1194,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: 82050ab7-7c3a-4a7b-8f4e-42395da1d41b
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: b1b5aa90-2a85-48be-aac9-a0ea0c683c38
                         CollisionGroup*: CustomFilter1
@@ -1775,7 +1778,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: 1b19f8ed-4fff-4de7-94c2-0a8655a91f90
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: f9755852-30fe-43fa-af8c-ceefaedeaaa7
                         CollisionGroup*: CustomFilter1
@@ -2172,7 +2176,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: f81d5b80-5336-4869-861e-2f8cd6c6009b
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: fe77d68a-e26b-404c-a3f5-207e2aa5b983
                         CollisionGroup*: CustomFilter1
@@ -2301,7 +2306,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: edd325f1-4e3b-4fca-9186-b8a421ab1965
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: fb04692c-fac7-4848-9f31-4bc0ab0de3e8
                         CollisionGroup*: CustomFilter1
@@ -3394,7 +3400,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: a9be8791-442d-4afe-86ed-c711f8a263be
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: cecd92ec-7eeb-45a3-8bae-449dde6a275b
                         CollisionGroup*: CustomFilter1
@@ -4143,7 +4150,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: 012ae3d6-dada-419e-bf1a-60b3d199edad
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: fc4033e8-213e-4a2e-b4b5-95735407ceca
                         CollisionGroup*: CustomFilter1
@@ -4893,7 +4901,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: dd6eb256-21f4-4874-80f4-1d9b0fd41566
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: 31cb2d5b-84c2-4b0f-adae-0c26c87e501c
                         CollisionGroup*: CustomFilter1
@@ -6244,7 +6253,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: bdc13368-943e-44e2-baa9-223c8451b60c
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: 32a27428-8960-4578-ad88-04fc97f82527
                         CollisionGroup*: CustomFilter1
@@ -7096,7 +7106,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: 2a43f4cd-10b4-4931-adbf-e878edc87a0e
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: b96cbd9c-a33e-4184-a583-199d8020775e
                         CollisionGroup*: CustomFilter1
@@ -7995,7 +8006,8 @@ Hierarchy:
                     7c901dfed21c864283aa0639481520b1: !ModelComponent
                         Id: d8115083-a4ce-4eda-b052-e26b9102e5c5
                         Model: 6f10dfd6-d885-4d17-a9c1-f3147fc75d32:Models/GridBase10x10
-                        Materials: {}
+                        Materials:
+                            16b675d366bb7b6e3d371e67adbacc30~0: ac443b1b-1445-410f-ba07-f5c6a5fde9c4:Materials/BodyWhite
                     e892de73aae78041aa74ca19b0b9f867: !StaticColliderComponent
                         Id: b3d13d9f-0d0a-4ae0-92f9-6e9682a62de3
                         CollisionGroup*: CustomFilter1

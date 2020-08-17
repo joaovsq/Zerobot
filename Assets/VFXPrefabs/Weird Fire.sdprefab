@@ -14,14 +14,14 @@ Hierarchy:
                         Id: a0ab3c86-788d-4615-9082-fe11373a7df7
                         Position: {X: 0.0, Y: 0.0, Z: 0.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 0.5, Y: 1.0, Z: 0.05}
+                        Scale: {X: 2.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     39b07e196ff99a4d957dbebeb153ad2c: !ParticleSystemComponent
                         Id: 14b05be9-b8a8-49a5-8542-fb550e3adde8
                         Control:
                             ResetSeconds: 3.0
                             Control: Play
-                        Color: {R: 0.91, G: 0.89635, B: 0.89635, A: 1.0}
+                        Color: {R: 0.95, G: 0.95, B: 0.95, A: 1.0}
                         Speed: 1.0
                         ParticleSystem:
                             Settings: {}
