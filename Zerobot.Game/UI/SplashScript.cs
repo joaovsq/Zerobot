@@ -1,6 +1,7 @@
 // Copyright (c) Stride contributors (https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System.Linq;
+using System.Threading;
 using Stride.Core.Serialization;
 using Stride.Engine;
 using Stride.Input;
@@ -21,7 +22,6 @@ namespace Zerobot.UI
         {
             if (Input.PointerEvents.Any(e => e.EventType == PointerEventType.Pressed))
             {
-                // Next scene
                 SceneSystem.SceneInstance.RootScene = Content.Load(NextSceneUrl);
                 Cancel();
             }

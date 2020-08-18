@@ -20,7 +20,6 @@ namespace Zerobot.CommandCenter
         private readonly Process ipcProcess = new Process();
         private readonly Logger log = GlobalLogger.GetLogger(typeof(DesktopStrategy).Name);
 
-
         public DesktopStrategy()
         {
             log.Debug("Starting the CommandCenter Desktop strategy...");
@@ -36,7 +35,7 @@ namespace Zerobot.CommandCenter
 
         public void Run()
         {
-            log.Info("Running DesktopStrategy...");
+            log.Debug("Running DesktopStrategy...");
 
             using (AnonymousPipeServerStream pipeServer =
                 new AnonymousPipeServerStream(PipeDirection.In,

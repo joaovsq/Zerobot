@@ -15,7 +15,7 @@ Defaults:
     - !Stride.Assets.EditorSettings,Stride.Assets
         RenderingMode: HDR
     - !Stride.Assets.Textures.TextureSettings,Stride.Assets
-        TextureQuality: High
+        TextureQuality: Best
     - !Stride.Physics.PhysicsSettings,Stride.Physics
         Flags: None
         MaxSubSteps: 1
@@ -58,5 +58,5 @@ PlatformFilters:
     - ^Mali\-4
     - ^Mali\-T6
     - ^Mali\-T7
-SplashScreenTexture: 28130626-6ab6-411f-958e-e7ea6e4a1380:zerobot
+SplashScreenTexture: d26edb11-10bd-403c-b3c2-9c7fcccf25e5:StrideDefaultSplashScreen
 SplashScreenColor: {R: 0, G: 0, B: 0, A: 255}

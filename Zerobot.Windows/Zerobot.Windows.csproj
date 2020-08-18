@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
@@ -19,7 +19,9 @@
 	</ItemGroup>
 
 	<Target Name="CopyReferencesContent" AfterTargets="AfterBuild">
-		<Copy SourceFiles="..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json"
+			  DestinationFolder="$(OutDir)"
+			  Condition="Exists('..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json')"/>
 	</Target>
-	
+
 </Project>

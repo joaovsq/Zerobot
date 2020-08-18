@@ -3,7 +3,7 @@ Id: 693fc0f4-034c-4f6c-8849-beea0a2403a3
 SerializedVersion: {Stride: 2.1.0.1}
 Tags: []
 Design:
-    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+    Resolution: {X: 960.0, Y: 505.0, Z: 1000.0}
 Hierarchy:
     RootParts:
         - !UniformGrid ref!! 52d858ba-c82f-4a62-99d7-3b35eb319dc4
@@ -15,7 +15,7 @@ Hierarchy:
                 Width: 263.0
                 Height: 67.53125
                 Margin: {}
-                Text: Press to Start
+                Text: Press any key
                 Font: 0c03e379-f48d-4f75-8be3-ce387e24f4bc:Textures/Fonts/JapanaseFont
                 TextSize: 42.0
                 TextColor: {R: 240, G: 240, B: 240, A: 255}
@@ -23,9 +23,9 @@ Hierarchy:
                 Id: 52d858ba-c82f-4a62-99d7-3b35eb319dc4
                 DependencyProperties: {}
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
-                Width: 1280.0
-                Height: 720.0
-                Margin: {}
+                Width: 960.0
+                Height: 471.0
+                Margin: {Bottom: 34.0}
                 MaximumWidth: 3.40282347E+38
                 MaximumHeight: 3.40282347E+38
                 MaximumDepth: 3.40282347E+38
@@ -41,6 +41,9 @@ Hierarchy:
                 Height: 77.0
                 VerticalAlignment: Top
                 Margin: {Left: 320.808533, Top: 26.0, Right: 320.808533}
+                MaximumWidth: 3.40282347E+38
+                MaximumHeight: 3.40282347E+38
+                MaximumDepth: 3.40282347E+38
                 Name: Title
                 Padding: {}
                 Content: !TextBlock ref!! f1f955e7-9438-4510-8610-6987db282fe5
@@ -81,6 +84,7 @@ Hierarchy:
                     5b3aeda0cfa611c1939b5b27bf9c4464~Panel.ZIndexPropertyKey: 1
                 BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
                 DrawLayerNumber: 2
+                CanBeHitByUser: true
                 Width: 315.0
                 Height: 67.0
                 VerticalAlignment: Bottom
