@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp2.1</TargetFramework>
-		<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-		<OutputType>Exe</OutputType>
 		<RootNamespace>Zerobot</RootNamespace>
+		<OutputType>Exe</OutputType>
+
+		<!--<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+		<PublishReadyToRun>true</PublishReadyToRun>-->
 
 		<OutputPath>..\Bin\Linux\$(Configuration)\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -16,9 +19,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Zerobot.CommandCenter\Zerobot.CommandCenter.csproj" />
 		<ProjectReference Include="..\Zerobot.Game\Zerobot.Game.csproj" />
 		<!-- Needed for custom runtime.json -->
 		<PackageReference Include="Stride" Version="4.0.0.1-beta04" PrivateAssets="contentfiles;analyzers" />
 	</ItemGroup>
 
+	<Target Name="CopyReferencesContent" AfterTargets="AfterBuild">
+		<Copy SourceFiles="..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json" DestinationFolder="$(OutDir)" Condition="Exists('..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json')" />
+	</Target>
+	
 </Project>
