@@ -7945,7 +7945,7 @@ Hierarchy:
                         Children: {}
                     7681190c55065d877a6fcd796802cd4d: !UIComponent
                         Id: dca948c3-9044-4af2-b0d0-d3e9629037d6
-                        Page: 37b8a0aa-1734-4155-ab62-dcd1c85989e3:Scenes/MainUIPage
+                        Page: 37b8a0aa-1734-4155-ab62-dcd1c85989e3:UI/MainUIPage
                         Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
                         Size: {X: 1.28, Y: 0.72, Z: 1.0}
         -   Entity:

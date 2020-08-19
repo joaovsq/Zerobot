@@ -1,0 +1,44 @@
+!SceneAsset
+Id: 5dbbf3ee-5047-49b9-9e7e-1eebfd92c81d
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! bfe19f83-f468-49a6-be86-8cb7c9e93ff6
+        - ref!! 3a00c955-04cf-4c86-8b8e-b78b93a3c2b4
+    Parts:
+        -   Entity:
+                Id: 3a00c955-04cf-4c86-8b8e-b78b93a3c2b4
+                Name: Splash
+                Components:
+                    6d08a7d537bb3d250a4876302e90ec38: !TransformComponent
+                        Id: 18137cc0-3b33-4ad5-a1a5-2fd81f4052a6
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    6fc96f460bcb4c183770833443a77095: !UIComponent
+                        Id: 71aa931e-68e5-4b7a-9ee1-c86e51c95515
+                        Page: 693fc0f4-034c-4f6c-8849-beea0a2403a3:UI/Splash/SplashUIPage
+                        Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+                        Size: {X: 1.28, Y: 0.72, Z: 1.0}
+                    3d95a17d4dd9c5917b7b32621437f008: !Zerobot.UI.SplashScript,Zerobot.Game
+                        Id: 3ac468c6-e9ce-4fd6-81f7-39a8bbd2d182
+                        NextSceneUrl: b18bcab5-6642-4c14-8763-952695b552b2:Scenes/MainScene
+        -   Entity:
+                Id: bfe19f83-f468-49a6-be86-8cb7c9e93ff6
+                Name: Camera
+                Components:
+                    dc514ad85088d15dd3d4b4582207d642: !TransformComponent
+                        Id: f054655d-24b7-40c2-9372-6f20f50d18a7
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    07d81109459ef172d0d2dc74ba6fcb3d: !CameraComponent
+                        Id: 9174445e-934c-4c83-ae51-35917f1ea3a6
+                        Name: null
+                        Projection: Perspective
+                        Slot: c15adccd-88f4-4cd9-a45a-55ce9f8e89e5
