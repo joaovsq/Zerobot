@@ -3,11 +3,17 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-		<OutputType>WinExe</OutputType>
 		<RootNamespace>Zerobot</RootNamespace>
+		<OutputType>Exe</OutputType>
+		
+		<!--<SelfContained>true</SelfContained>-->
+		<!--<RuntimeIdentifier>win10-x64</RuntimeIdentifier>-->
+		<!--<RuntimeIdentifiers>win10-x64;osx.10.11-x64;ubuntu.18.04-x64</RuntimeIdentifiers>-->
+		<!--<PublishReadyToRun>true</PublishReadyToRun>-->
 
 		<OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 
 		<!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
 		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
@@ -19,9 +25,7 @@
 	</ItemGroup>
 
 	<Target Name="CopyReferencesContent" AfterTargets="AfterBuild">
-		<Copy SourceFiles="..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json"
-			  DestinationFolder="$(OutDir)"
-			  Condition="Exists('..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json')"/>
+		<Copy SourceFiles="..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json" DestinationFolder="$(OutDir)" Condition="Exists('..\Bin\CommandCenter\$(Configuration)\Zerobot.CommandCenter.runtimeconfig.json')" />
 	</Target>
 
 </Project>

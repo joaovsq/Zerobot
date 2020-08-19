@@ -227,13 +227,22 @@ Hierarchy:
                                 Size: {X: 1.0, Y: 1.0, Z: 1.0}
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                    4e93d2aaca7cd64e9e2cdb87b6dea8c1: !Zerobot.Gameplay.CrateScript,Zerobot.Game
+                    3e683ffe5486443460cb2f38640f2c1b: !Zerobot.Gameplay.CrateScript,Zerobot.Game
+                        Id: 65b16ae7-3339-4858-859f-84fc263203bf
+                        CoinGetEffect: eb2e33c3-5b28-4d41-9854-00adb6aac10a:VFXPrefabs/vfx-Dustcloud
+                        CoinSpawnModel: 0cd247ff-be89-454a-893c-550e25080970:LootGoldCoin
+                        SoundEffect: f1d1f7d9-5bf4-4414-81fe-6051aca8c2fc:Audio/crate_breaking
+                        Trigger: ref!! 12fe4860-0b67-4f55-bb5c-18feb0e7e307
+                    884f43d09b953ff1620b9bbd2f35bfe4: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                        Id: 12fe4860-0b67-4f55-bb5c-18feb0e7e307
+                        TriggerCondition: StartOnly
+                    4481a0a813b0cb446b1b9f373e08b6a5*: !Zerobot.Gameplay.CrateScript,Zerobot.Game
                         Id: a25518bf-beae-4a8f-a966-3c0349602029
                         CoinGetEffect: eb2e33c3-5b28-4d41-9854-00adb6aac10a:VFXPrefabs/vfx-Dustcloud
                         CoinSpawnModel: 0cd247ff-be89-454a-893c-550e25080970:LootGoldCoin
                         SoundEffect: f1d1f7d9-5bf4-4414-81fe-6051aca8c2fc:Audio/crate_breaking
                         Trigger: ref!! 10d69fee-2cda-4c01-acad-b08ff32f62b8
-                    28cbe91f2b1efd4a865067a932c54649: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                    f5e7e057cbf75d933b35fb6fd8d3ad57*: !Zerobot.Gameplay.Trigger,Zerobot.Game
                         Id: 10d69fee-2cda-4c01-acad-b08ff32f62b8
                         TriggerCondition: StartOnly
             Base:

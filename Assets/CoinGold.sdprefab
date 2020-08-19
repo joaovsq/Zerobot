@@ -21,7 +21,7 @@ Hierarchy:
                         Id: 48b3ee76-ae56-4880-8daf-19410ab51cf5
                         Model: f1f4282a-ec15-4177-96a4-b9630ec5b3ca:Models/CoinGold
                         Materials: {}
-                    2bdedf2b36b5ac47a5ddb46bc1d762f5: !Zerobot.Gameplay.CoinScript,Zerobot.Game
+                    c31611c580cf39b138c858aeed012f9f: !Zerobot.Gameplay.CoinScript,Zerobot.Game
                         Id: 2bdfde2b-b536-47ac-a5dd-b46bc1d762f5
                         CoinGetEffect: c8092c30-9dd9-47d1-ba25-f20a1d543a74:VFXPrefabs/vfx-GetCoin
                         Trigger: ref!! 0f987c5d-9f63-4567-9b68-a76d9fcdd82c
@@ -43,7 +43,7 @@ Hierarchy:
                                 Is2D: false
                                 Radius: 0.025
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
-                    5d7c980f639f67459b68a76d9fcdd82c: !Zerobot.Gameplay.Trigger,Zerobot.Game
+                    da00be7942e3d24a0bf0c9b225657008: !Zerobot.Gameplay.Trigger,Zerobot.Game
                         Id: 0f987c5d-9f63-4567-9b68-a76d9fcdd82c
                         TriggerCondition: StartOnly
         -   Entity:

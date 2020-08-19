@@ -2,13 +2,17 @@
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp2.1</TargetFramework>
-		<RuntimeIdentifier>osx-x64</RuntimeIdentifier>
 		<ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-		<OutputType>Exe</OutputType>
 		<RootNamespace>Zerobot</RootNamespace>
+
+		<OutputType>Exe</OutputType>
+		<RuntimeIdentifier>osx-x64</RuntimeIdentifier>
+		<SelfContained>true</SelfContained>
+		<PublishReadyToRun>true</PublishReadyToRun>
 
 		<OutputPath>..\Bin\macOS\$(Configuration)\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 
 		<!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
 		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>

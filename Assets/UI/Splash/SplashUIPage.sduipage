@@ -75,9 +75,24 @@ Hierarchy:
                     9e65348f99d63e924607ca2b446855ed: !ContentDecorator ref!! 651798c0-52db-4732-ab6b-b8e033edffaf
                     6f03fd63654db1ab0eb25f53db780e97: !ContentDecorator ref!! ea03cae8-fb29-4b79-b9fc-e2f5ce0a4b6d
                     32759b273daa6a7fe6e584c641e82c70: !TextBlock ref!! 901653a7-fe05-4e47-a22b-abb9148d838f
+                    4c6c2b276725e41425a5256fa72a453a: !TextBlock ref!! cd230f47-69c8-4385-8faf-2cfbd6c2f368
                 RowDefinitions: {}
                 ColumnDefinitions: {}
                 LayerDefinitions: {}
+        -   UIElement: !TextBlock
+                Id: cd230f47-69c8-4385-8faf-2cfbd6c2f368
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Width: 54.5
+                Height: 37.0
+                HorizontalAlignment: Right
+                VerticalAlignment: Bottom
+                Margin: {Right: 98.05853, Bottom: 12.0}
+                Name: Loading
+                Text: Loading....
+                Font: 0c03e379-f48d-4f75-8be3-ce387e24f4bc:Textures/Fonts/JapanaseFont
+                TextSize: 28.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
         -   UIElement: !ContentDecorator
                 Id: ea03cae8-fb29-4b79-b9fc-e2f5ce0a4b6d
                 DependencyProperties:

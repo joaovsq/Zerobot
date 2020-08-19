@@ -2,7 +2,7 @@
 Id: 2e32b5b8-a236-42b5-bde1-af99fde23f50
 SerializedVersion: {Stride: 3.1.0.1}
 Tags: []
-DefaultScene: 5dbbf3ee-5047-49b9-9e7e-1eebfd92c81d:Scenes/SplashScene
+DefaultScene: b18bcab5-6642-4c14-8763-952695b552b2:Scenes/MainScene
 GraphicsCompositor: cf0e46a3-60cf-4acb-9cf0-3d35d3ef7a71:GraphicsCompositor
 Defaults:
     - !Stride.Graphics.RenderingSettings,Stride.Graphics
@@ -58,5 +58,5 @@ PlatformFilters:
     - ^Mali\-4
     - ^Mali\-T6
     - ^Mali\-T7
-SplashScreenTexture: d26edb11-10bd-403c-b3c2-9c7fcccf25e5:StrideDefaultSplashScreen
+SplashScreenTexture: fc2952b7-5b56-46be-b942-42a6197bfeb5:zerobot
 SplashScreenColor: {R: 0, G: 0, B: 0, A: 255}

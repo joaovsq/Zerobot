@@ -1,7 +1,0 @@
-!Texture
-Id: 87e6c7e1-1bce-45d4-8896-032611930596
-SerializedVersion: {Stride: 2.0.0.0}
-Tags: []
-Source: !file ../Resources/Textures/Zerobot/zerobot.PNG
-Type: !ColorTextureType
-    ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}

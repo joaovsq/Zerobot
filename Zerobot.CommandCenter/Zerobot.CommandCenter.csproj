@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<OutputType>Exe</OutputType>
 		<RootNamespace>Zerobot</RootNamespace>
+		<OutputType>Exe</OutputType>
 
 		<OutputPath>..\Bin\CommandCenter\$(Configuration)\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

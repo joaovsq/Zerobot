@@ -9,6 +9,7 @@
 
 		<OutputPath>..\Bin\Linux\$(Configuration)\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 
 		<!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
 		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
