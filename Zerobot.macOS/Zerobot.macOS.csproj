@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
 		<RuntimeIdentifier>osx-x64</RuntimeIdentifier>
 		<ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-		<!--<OutputType>Exe</OutputType>-->
+		<OutputType>Exe</OutputType>
 		<RootNamespace>Zerobot</RootNamespace>
 
 		<OutputPath>..\Bin\macOS\$(Configuration)\</OutputPath>

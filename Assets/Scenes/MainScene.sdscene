@@ -3315,7 +3315,7 @@ Hierarchy:
                         AttackCooldown: 0.65
                         BeepEffect: 3e024c71-300d-4da2-b02e-6ca28f1640bf:Audio/scream
                         SignalEffect: feaae6d5-6de3-42c3-b703-70889f433e48:VFXPrefabs/Signal Effect
-                        MarkerEffect: 23a80f35-aeb2-4e70-81b0-0f5f13112af4:VFXPrefabs/Weird Fire
+                        MarkerEffect: 23a80f35-aeb2-4e70-81b0-0f5f13112af4:VFXPrefabs/Marker Effect
                     809bf66aef692646891c293be4ca17b2: !Zerobot.Player.PlayerInput,Zerobot.Game
                         Id: 6af69b80-69ef-4626-891c-293be4ca17b2
                         ControllerIndex: 0

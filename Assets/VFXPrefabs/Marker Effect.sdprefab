@@ -8,13 +8,13 @@ Hierarchy:
     Parts:
         -   Entity:
                 Id: 3cf3e9e1-ce59-43ed-aaa2-53a87524f9d9
-                Name: The FIRE
+                Name: Marker effect
                 Components:
                     fa8f95b220b7df4e8f0019f95a5d1eef: !TransformComponent
                         Id: a0ab3c86-788d-4615-9082-fe11373a7df7
                         Position: {X: 0.0, Y: 0.0, Z: 0.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 2.0, Y: 1.0, Z: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     39b07e196ff99a4d957dbebeb153ad2c: !ParticleSystemComponent
                         Id: 14b05be9-b8a8-49a5-8542-fb550e3adde8
@@ -28,7 +28,8 @@ Hierarchy:
                             BoundingShape: null
                             Emitters:
                                 eb5ed7aa88fb514bba1d3d103de25130:
-                                    EmitterName: fire
+                                    Enabled: false
+                                    EmitterName: 
                                     MaxParticlesOverride: 20
                                     ParticleLifetime: {X: 1.0, Y: 1.0}
                                     DrawPriority: 5
@@ -43,7 +44,7 @@ Hierarchy:
                                             LeftChild: !ComputeFloat4
                                                 Value: {X: 4.0, Y: 4.0, Z: 4.0, W: 1.0}
                                             RightChild: !ComputeTextureColor
-                                                Texture: 15fc073f-ca9a-4789-9e90-cf14f4ad8405:Textures/Effects/bonfire8x8
+                                                Texture: 85eaac99-5f68-4a67-a80b-efcbb9f4ad24:Textures/circle01
                                                 FallbackValue:
                                                     Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                 Scale: {X: 1.0, Y: 1.0}
@@ -166,17 +167,23 @@ Hierarchy:
                                     Material: !ParticleMaterialComputeColor
                                         ComputeColor: !ComputeBinaryColor
                                             Operator: Multiply
-                                            LeftChild: !ComputeVertexStreamColor
-                                                Stream: !ColorVertexStreamDefinition {}
-                                            RightChild: !ComputeTextureColor
-                                                Texture: a0b9eed2-f962-4d8f-b0a9-324a4e39d994:Textures/Ring01
+                                            LeftChild: !ComputeTextureColor
+                                                Texture: 85eaac99-5f68-4a67-a80b-efcbb9f4ad24:Textures/circle01
                                                 FallbackValue:
                                                     Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
                                                 Scale: {X: 1.0, Y: 1.0}
                                                 Offset: {X: 0.0, Y: 0.0}
                                                 Swizzle: null
+                                            RightChild: !ComputeFloat4
+                                                Value: {X: 6.0, Y: 12.0, Z: 12.0, W: 1.0}
                                         UVBuilder: null
                                         ForceTexCoords: false
-                                    Spawners: {}
+                                    Spawners:
+                                        11dba7f55a976861e79f368131e85fe3: !SpawnerPerFrame
+                                            LoopCondition: Looping
+                                            Delay: {X: 0.0, Y: 0.0}
+                                            Duration: {X: 1.0, Y: 1.0}
+                                            SpawnCount: 1.0
+                                            Framerate: 60.0
                                     Initializers: {}
                                     Updaters: {}
