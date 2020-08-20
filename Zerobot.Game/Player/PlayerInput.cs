@@ -12,12 +12,15 @@ namespace Zerobot.Player
 {
     public class PlayerInput : SyncScript
     {
+
+        // TODO: abstract all event keys to a virtual input, we may need to port this to multiple platforms
+
         /// <summary>
         /// Raised every frame with the intended direction of movement from the player.
         /// </summary>
         public static readonly EventKey<ClickResult> MoveDestinationEventKey = new EventKey<ClickResult>();
 
-        public static readonly EventKey<bool> JumpEventKey = new EventKey<bool>();
+        public static readonly EventKey<bool> pickItemEventKey = new EventKey<bool>();
 
         public int ControllerIndex { get; set; }
 
@@ -99,5 +102,16 @@ namespace Zerobot.Player
                 }
             }
         }
+
+        /// <summary>
+        /// Detects when the "pick item" key is activated
+        /// </summary>
+        private void DetectPickItem()
+        {
+            bool keyPressed = Input.IsKeyDown(Keys.C);
+
+
+        }
+
     }
 }

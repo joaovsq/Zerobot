@@ -1,4 +1,3 @@
-
 *.user
 *.lock
 *.lock.json
@@ -13,3 +12,5 @@ _ReSharper*
 obj/
 Cache/
 [Pp]publish/
+
+Vagrantfile
