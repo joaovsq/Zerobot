@@ -16,6 +16,7 @@ namespace Zerobot.CommandCenter
         Beep,
         Signal,
         Marker,
+        Turn,
         End
     }
 

@@ -129,6 +129,7 @@ namespace Zerobot.Player
 
             commandInterpreter.moveHandler = RemoteMove;
             commandInterpreter.canMoveHandler = RemoteCanMove;
+            commandInterpreter.turnHandler = RemoteTurn;
             commandInterpreter.haltHandler = HaltMovement;
             commandInterpreter.beepHandler = PlayBeep;
             commandInterpreter.signalHandler = Signal;
@@ -360,6 +361,14 @@ namespace Zerobot.Player
         {
             return CurrentWaypoint == Vector3.Zero ?
                 true : modelChildEntity.Transform.WorldMatrix.TranslationVector == CurrentWaypoint;
+        }
+
+        /// <summary>
+        /// Turns the character using a X float in degrees
+        /// </summary>
+        private void RemoteTurn(float degrees)
+        {
+            modelChildEntity.Transform.Rotation *= Quaternion.RotationYawPitchRoll(MathUtil.DegreesToRadians(degrees), 0, 0);
         }
 
         /// <summary>

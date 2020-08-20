@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
@@ -12,6 +13,7 @@ namespace Zerobot.Player
     {
 
         public delegate void Move(Vector3 direction);
+        public delegate void Turn(float degrees);
         public delegate bool CanMove();
         public delegate void Halt();
         public delegate void Beep();
@@ -19,6 +21,7 @@ namespace Zerobot.Player
         public delegate void Marker(bool down);
 
         public Move moveHandler;
+        public Turn turnHandler;
         public CanMove canMoveHandler;
         public Halt haltHandler;
         public Beep beepHandler;
@@ -98,6 +101,10 @@ namespace Zerobot.Player
                     }
                     break;
 
+                case CommandToken.Turn:
+                    Rotate(expression.Operands);
+                    break;
+
                 case CommandToken.Stop:
                     haltHandler();
                     break;
@@ -150,6 +157,42 @@ namespace Zerobot.Player
             }
 
             return new Vector3();
+        }
+
+        private void Rotate(List<string> operands)
+        {
+            if (operands.Count != 2)
+            {
+                throw new ArgumentException("A Turn expression must have a direction (right or left) and a value in degrees. For example: turn left 90");
+            }
+
+            string direction = operands[0];
+            bool isRight = direction.Equals("right");
+            bool isLeft = direction.Equals("left");
+            if (!isRight && !isLeft)
+            {
+                throw new ArgumentException("The turn direction must be right or left");
+            }
+
+            float degrees;
+            try
+            {
+                degrees = float.Parse(operands[1]);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("the turn degrees must be a float");
+            }
+
+            if (isRight)
+            {
+                turnHandler(-degrees);
+            }
+            else if (isLeft)
+            {
+                turnHandler(degrees);
+            }
+
         }
 
     }
