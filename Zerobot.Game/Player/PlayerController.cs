@@ -4,6 +4,7 @@ using Stride.Audio;
 using Stride.Core;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
+using Stride.Core.Shaders.Ast;
 using Stride.Engine;
 using Stride.Engine.Events;
 using Stride.Graphics;
@@ -128,6 +129,7 @@ namespace Zerobot.Player
             beepSoundInstance.Stop();
 
             commandInterpreter.moveHandler = RemoteMove;
+            commandInterpreter.moveCurrentHandler = RemoteMoveCurrentDirection;
             commandInterpreter.canMoveHandler = RemoteCanMove;
             commandInterpreter.turnHandler = RemoteTurn;
             commandInterpreter.haltHandler = HaltMovement;
@@ -293,6 +295,7 @@ namespace Zerobot.Player
                 // Character orientation
                 if (moveDirection.Length() > 0.001)
                 {
+                    lastYawOrientation = yawOrientation;
                     yawOrientation = MathUtil.RadiansToDegrees((float)Math.Atan2(-moveDirection.Z, moveDirection.X) + MathUtil.PiOverTwo);
                 }
                 modelChildEntity.Transform.Rotation = Quaternion.RotationYawPitchRoll(MathUtil.DegreesToRadians(yawOrientation), 0, 0);
@@ -334,7 +337,8 @@ namespace Zerobot.Player
         }
 
         /// <summary>
-        /// move action triggered by the remote controller
+        /// Move action triggered by the remote controller
+        /// The final destination will be: currentPos + direction
         /// </summary>
         /// <param name="direction"> the move direction </param>
         private void RemoteMove(Vector3 direction)
@@ -352,6 +356,21 @@ namespace Zerobot.Player
             }
 
             UpdateMoveTowardsDestination(MaxRunSpeed);
+        }
+
+        /// <summary>
+        /// Moves the remote controlled character using its current direction with the given lenght
+        /// </summary>
+        /// <param name="lenght"></param>
+        private void RemoteMoveCurrentDirection(float lenght)
+        {
+            float radians = modelChildEntity.Transform.Rotation.YawPitchRoll.X;
+            var rotation = Quaternion.RotationYawPitchRoll(radians, 0, 0);
+
+            var direction = Vector3.UnitZ * lenght;
+            rotation.Rotate(ref direction);
+
+            RemoteMove(direction);
         }
 
         /// <summary>

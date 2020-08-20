@@ -13,6 +13,7 @@ namespace Zerobot.Player
     {
 
         public delegate void Move(Vector3 direction);
+        public delegate void MoveCurrentDirection(float lenght);
         public delegate void Turn(float degrees);
         public delegate bool CanMove();
         public delegate void Halt();
@@ -21,6 +22,7 @@ namespace Zerobot.Player
         public delegate void Marker(bool down);
 
         public Move moveHandler;
+        public MoveCurrentDirection moveCurrentHandler;
         public Turn turnHandler;
         public CanMove canMoveHandler;
         public Halt haltHandler;
@@ -90,19 +92,11 @@ namespace Zerobot.Player
             {
                 case CommandToken.Move:
 
-                    // TODO: optimize this thing, catch branches are terrible
-                    try
-                    {
-                        moveHandler(GetMoveDirectionVector(expression.Operands[0], float.Parse(expression.Operands[1])));
-                    }
-                    catch (Exception)
-                    {
-                        moveHandler(GetMoveDirectionVector(expression.Operands[0]));
-                    }
+                    MoveCommand(expression.Operands);
                     break;
 
                 case CommandToken.Turn:
-                    Rotate(expression.Operands);
+                    RotateCommand(expression.Operands);
                     break;
 
                 case CommandToken.Stop:
@@ -136,32 +130,47 @@ namespace Zerobot.Player
             }
         }
 
-        private Vector3 GetMoveDirectionVector(string direction, float lenght = 1f)
+        private void MoveCommand(List<string> operands)
         {
+            string direction = operands[0];
+            float lenght = 1f;
 
+            // TODO: optimize this thing, catch branches are terrible
+            try
+            {
+                lenght = float.Parse(operands[1]);
+            }
+            catch (Exception) { }
+
+            var movement = Vector3.Zero;
             if (direction.Equals("up"))
             {
-                return new Vector3(lenght, 0f, 0f);
+                moveHandler(new Vector3(lenght, 0f, 0f));
             }
             else if (direction.Equals("down"))
             {
-                return new Vector3(lenght * (-1), 0f, 0f);
+                moveHandler(new Vector3(lenght * (-1), 0f, 0f));
             }
             else if (direction.Equals("left"))
             {
-                return new Vector3(0f, 0f, lenght * (-1));
+                moveHandler(new Vector3(0f, 0f, lenght * (-1)));
             }
             else if (direction.Equals("right"))
             {
-                return new Vector3(0f, 0f, lenght);
+                moveHandler(new Vector3(0f, 0f, lenght));
             }
-
-            return new Vector3();
+            else
+            {
+                // if is not a direction, then can only be a leght, for example: move 10 
+                // in this case we must use the current direction callback
+                lenght = float.Parse(direction);
+                moveCurrentHandler(lenght);
+            }
         }
 
-        private void Rotate(List<string> operands)
+        private void RotateCommand(List<string> operands)
         {
-            if (operands.Count != 2)
+            if (operands.Count < 2)
             {
                 throw new ArgumentException("A Turn expression must have a direction (right or left) and a value in degrees. For example: turn left 90");
             }
